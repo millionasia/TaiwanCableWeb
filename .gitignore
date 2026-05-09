@@ -1,0 +1,24 @@
+.nuxt
+.output
+node_modules
+dist
+.env
+*.local
+.vercel
+--host
+*.log
+*.err
+
+# Old static prototype files kept locally for reference.
+/index.html
+/about.html
+/members.html
+/products.html
+/resources.html
+/join.html
+/contact.html
+/sitemap.html
+/styles.css
+/redesign-notes.md
+/assets/hero-cable-section.png
+/assets/homepage-cable-network.svg

@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-brand-ink antialiased;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1180px] px-3 md:px-4;
+  }
+
+  .panel {
+    @apply overflow-hidden rounded-lg border border-slate-200 bg-white shadow-steel;
+  }
+
+  .eyebrow {
+    @apply mb-2 text-xs font-black uppercase tracking-normal text-brand-dark;
+  }
+
+  .ad-surface {
+    @apply relative overflow-hidden rounded-lg border border-white/20 bg-gradient-to-br from-brand-graphite to-slate-700 p-5 text-white;
+  }
+
+  .ad-surface::after {
+    content: "";
+    @apply absolute right-5 top-4 h-20 w-20 rounded-full border-[15px] border-white/15;
+  }
+}
+
+.ad-marquee-track {
+  animation: ad-scroll-up 20s linear infinite;
+}
+
+.ad-marquee:hover .ad-marquee-track {
+  animation-play-state: paused;
+}
+
+.ad-rotator {
+  perspective: 900px;
+}
+
+.ad-rotator-item {
+  opacity: 0;
+  transform: rotateX(86deg);
+  transform-origin: center bottom;
+  animation: ad-flip 12s infinite;
+}
+
+.ad-rotator-item:nth-child(2) {
+  animation-delay: 4s;
+}
+
+.ad-rotator-item:nth-child(3) {
+  animation-delay: 8s;
+}
+
+.ad-rotator:hover .ad-rotator-item {
+  animation-play-state: paused;
+}
+
+@keyframes ad-scroll-up {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes ad-flip {
+  0% {
+    opacity: 0;
+    transform: rotateX(86deg);
+  }
+
+  6%,
+  28% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+
+  34%,
+  100% {
+    opacity: 0;
+    transform: rotateX(-86deg);
+  }
+}
