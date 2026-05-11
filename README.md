@@ -7,6 +7,7 @@
 - Nuxt.js 3
 - Vue 3
 - Tailwind CSS
+- Vercel Web Analytics
 - Mock data：`data/millionasia.js`
 - Static assets：`public/images`
 
@@ -67,6 +68,24 @@ corepack pnpm preview
 
 ```bash
 corepack pnpm dlx vercel deploy --prod
+```
+
+## Vercel Web Analytics
+
+本專案已安裝並啟用 Vercel Web Analytics：
+
+```bash
+corepack pnpm add @vercel/analytics
+```
+
+Nuxt module 設定在：
+
+```text
+nuxt.config.ts
+```
+
+```ts
+modules: ["@nuxtjs/tailwindcss", "@vercel/analytics"]
 ```
 
 ## 主要目錄
