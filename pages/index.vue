@@ -5,8 +5,17 @@ useHead({ title: "首頁" })
 
 const home = millionasia.home
 const ads = millionasia.getAds()
-const notices = millionasia.notices
-const events = millionasia.events
+const newsCategories = millionasia.newsCategories
+const latestNews = millionasia.latestNews
+const activeCategory = ref("全部")
+
+const filteredNews = computed(() => {
+  const news = activeCategory.value === "全部"
+    ? latestNews
+    : latestNews.filter((item) => item.category === activeCategory.value)
+
+  return news.slice(0, 6)
+})
 </script>
 
 <template>
@@ -36,9 +45,7 @@ const events = millionasia.events
         </dl>
       </div>
 
-      <figure class="order-1 lg:order-2">
-        <img :src="home.heroImage" alt="冷冽專業風格的實體電線電纜剖面照片" class="aspect-[16/10] w-full rounded-lg object-cover shadow-steel">
-      </figure>
+      <HeroCarousel class="order-1 lg:order-2" :images="home.heroImages" />
     </div>
   </section>
 
@@ -47,46 +54,46 @@ const events = millionasia.events
       <LeftAdMarquee :ads="ads.leftMarquee" />
 
       <div class="grid gap-5">
+        <AdRotator :ads="ads.newsRotator" aria-label="最新消息上方廣告輪播" />
+
         <section class="panel">
           <div class="flex items-end justify-between gap-4 border-b border-slate-200 p-5">
             <div>
-              <p class="eyebrow">Important Notice</p>
-              <h2 class="text-3xl font-black">重要通知</h2>
+              <p class="eyebrow">Latest News</p>
+              <h2 class="text-3xl font-black">最新消息</h2>
             </div>
             <NuxtLink to="/resources" class="font-black text-brand-dark underline decoration-2 underline-offset-4">
-              查看通知
+              查看全部
             </NuxtLink>
           </div>
+
+          <div class="flex gap-2 overflow-x-auto border-b border-slate-200 bg-slate-50 p-4" role="tablist" aria-label="最新消息分類">
+            <button
+              v-for="category in ['全部', ...newsCategories]"
+              :key="category"
+              type="button"
+              class="min-h-10 shrink-0 rounded-lg border px-4 text-sm font-black transition"
+              :class="activeCategory === category ? 'border-brand-dark bg-brand-dark text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-brand-dark'"
+              role="tab"
+              :aria-selected="activeCategory === category"
+              @click="activeCategory = category"
+            >
+              {{ category }}
+            </button>
+          </div>
+
           <div class="grid">
-            <NuxtLink v-for="notice in notices" :key="notice.title" to="/resources" class="grid gap-1 border-b border-slate-200 p-5 last:border-b-0 md:grid-cols-[110px_1fr] md:gap-x-5 hover:bg-slate-50">
-              <time class="font-black text-brand-dark" :datetime="notice.isoDate">{{ notice.date }}</time>
-              <strong class="text-lg">{{ notice.title }}</strong>
-              <span class="text-slate-600 md:col-start-2">{{ notice.text }}</span>
-            </NuxtLink>
-          </div>
-        </section>
-
-        <AdRotator :ads="ads.eventRotator" aria-label="活動看板上方廣告輪播" />
-
-        <section class="panel">
-          <div class="flex items-end justify-between gap-4 border-b border-slate-200 p-5">
-            <div>
-              <p class="eyebrow">Event Board</p>
-              <h2 class="text-3xl font-black">活動看板</h2>
-            </div>
-            <NuxtLink to="/resources" class="font-black text-brand-dark underline decoration-2 underline-offset-4">
-              查看活動
-            </NuxtLink>
-          </div>
-          <div class="grid md:grid-cols-2">
-            <NuxtLink v-for="event in events" :key="event.title" to="/resources" class="grid grid-cols-[72px_1fr] gap-4 border-b border-slate-200 p-5 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 hover:bg-slate-50">
-              <time class="grid h-20 w-16 place-items-center content-center rounded-lg bg-brand-ink text-white" :datetime="event.isoDate">
-                <span class="text-xs font-black uppercase">{{ event.month }}</span>
-                <strong class="text-3xl leading-none">{{ event.day }}</strong>
-              </time>
-              <div>
-                <h3 class="text-lg font-black">{{ event.title }}</h3>
-                <p class="mt-1 text-slate-600">{{ event.text }}</p>
+            <NuxtLink
+              v-for="item in filteredNews"
+              :key="`${item.isoDate}-${item.title}`"
+              to="/resources"
+              class="grid gap-2 border-b border-slate-200 p-5 last:border-b-0 md:grid-cols-[108px_96px_1fr] md:items-start md:gap-4 hover:bg-slate-50"
+            >
+              <time class="font-black text-brand-dark" :datetime="item.isoDate">{{ item.date }}</time>
+              <span class="w-fit rounded-full bg-slate-100 px-2.5 py-1 text-xs font-black text-brand-steel">{{ item.category }}</span>
+              <div class="min-w-0">
+                <h3 class="text-lg font-black">{{ item.title }}</h3>
+                <p class="mt-1 text-slate-600">{{ item.text }}</p>
               </div>
             </NuxtLink>
           </div>

@@ -41,17 +41,21 @@ export class MillionasiaSiteData {
         { label: "AD", title: "檢驗測試", text: "品質認證服務" },
         { label: "AD", title: "工業展會", text: "會員優惠曝光" }
       ],
-      eventRotator: [
-        { label: "AD", title: "活動合作夥伴", text: "活動看板上方廣告", tone: "steel" },
+      newsRotator: [
+        { label: "AD", title: "產業合作夥伴", text: "最新消息上方廣告", tone: "steel" },
         { label: "AD", title: "線纜產業研討會", text: "報名與品牌曝光", tone: "red" },
         { label: "AD", title: "智慧製造專區", text: "供應鏈合作版位", tone: "dark" }
       ]
     }
 
     this.home = {
-      heroImage: "/images/hero-cable-section.png",
+      heroImages: [
+        { src: "/images/hero-cable-section.png", alt: "多款實體電線電纜剖面產品" },
+        { src: "/images/hero-cable-lab.png", alt: "高壓電纜剖面與專業檢測設備" },
+        { src: "/images/hero-cable-factory.png", alt: "電纜製造工廠與大型成品電纜剖面" }
+      ],
       eyebrow: "Industry Portal",
-      title: "臺灣電線電纜產業的會員服務入口",
+      title: "臺灣區電線電纜服務入口",
       lead: "以專業、穩定、可維護的多頁式網站架構，整合會員查詢、產品分類、LME 行情、統計資料、公告與活動。",
       stats: [
         { value: "8", label: "產品分類" },
@@ -66,15 +70,21 @@ export class MillionasiaSiteData {
       ]
     }
 
-    this.notices = [
-      { date: "2026.05.01", isoDate: "2026-05-01", title: "公告本會會員名錄資料更新作業", text: "會員基本資料、產品分類與聯絡窗口可於線上填報更新。" },
-      { date: "2026.04.22", isoDate: "2026-04-22", title: "電線電纜相關標準與法規宣導說明會", text: "協助會員掌握產品認證、檢驗與市場規範重點。" },
-      { date: "2026.04.10", isoDate: "2026-04-10", title: "114 年度產銷統計資料填報提醒", text: "請會員廠商依期限完成資料回覆。" }
-    ]
+    this.newsCategories = ["休市公告", "金屬月刊", "公會公告", "產業動態", "法規標準", "活動訊息"]
 
-    this.events = [
-      { month: "Jun", day: "18", isoDate: "2026-06-18", title: "會員廠參訪與供應鏈交流", text: "桃園製造基地，上午 09:30 報到。" },
-      { month: "Jul", day: "09", isoDate: "2026-07-09", title: "低碳製造與材料趨勢講座", text: "線上直播與會後簡報下載。" }
+    this.latestNews = [
+      { date: "2026.09.18", isoDate: "2026-09-18", category: "休市公告", title: "國際金屬市場休市日期公告", text: "彙整近期 LME 與主要國際市場休市資訊。" },
+      { date: "2026.09.15", isoDate: "2026-09-15", category: "金屬月刊", title: "2026 年 8 月金屬行情月刊", text: "銅、鋁、鎳與鋅市場行情及產業趨勢摘要。" },
+      { date: "2026.09.10", isoDate: "2026-09-10", category: "公會公告", title: "本會會員名錄資料更新作業", text: "請會員確認公司資料、產品分類與聯絡窗口。" },
+      { date: "2026.09.05", isoDate: "2026-09-05", category: "產業動態", title: "低碳線纜與智慧電網供應鏈趨勢", text: "整理電力基礎建設與線纜產業近期發展。" },
+      { date: "2026.08.28", isoDate: "2026-08-28", category: "法規標準", title: "電線電纜檢驗標準修訂重點", text: "提供產品認證、檢驗與標示規範摘要。" },
+      { date: "2026.08.20", isoDate: "2026-08-20", category: "活動訊息", title: "會員廠參訪與供應鏈交流活動", text: "安排製造基地參訪及會員產業交流。" },
+      { date: "2026.08.15", isoDate: "2026-08-15", category: "休市公告", title: "中秋節期間市場資訊更新時程", text: "休市期間行情資料將於開市後統一更新。" },
+      { date: "2026.08.08", isoDate: "2026-08-08", category: "金屬月刊", title: "2026 年 7 月金屬行情月刊", text: "回顧基本金屬價格走勢與供需變化。" },
+      { date: "2026.07.30", isoDate: "2026-07-30", category: "公會公告", title: "年度產銷統計資料填報提醒", text: "請會員廠商依期限完成資料回覆。" },
+      { date: "2026.07.22", isoDate: "2026-07-22", category: "產業動態", title: "再生銅材應用與品質管理", text: "關注循環材料在線纜產品的實務應用。" },
+      { date: "2026.07.15", isoDate: "2026-07-15", category: "法規標準", title: "電纜阻燃測試規範說明", text: "整理測試程序與會員常見問題。" },
+      { date: "2026.07.09", isoDate: "2026-07-09", category: "活動訊息", title: "低碳製造與材料趨勢講座", text: "提供線上直播與會後簡報下載。" }
     ]
 
     this.members = [
