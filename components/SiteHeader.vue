@@ -1,5 +1,4 @@
 <script setup>
-import { Building2, Cable, LibraryBig, Mail, UserPlus, Users } from "@lucide/vue"
 import { millionasia } from "~/data/millionasia"
 
 defineProps({
@@ -11,12 +10,12 @@ const isOpen = ref(false)
 const navigation = millionasia.getNavigation().filter((item) => item.to !== "/")
 const contact = millionasia.getContact()
 const navigationIcons = {
-  "/about": Building2,
-  "/members": Users,
-  "/products": Cable,
-  "/resources": LibraryBig,
-  "/join": UserPlus,
-  "/contact": Mail
+  "/about": "building",
+  "/members": "users",
+  "/products": "cable",
+  "/resources": "library",
+  "/join": "user-plus",
+  "/contact": "mail"
 }
 
 const isCurrent = (to) => {
@@ -83,11 +82,9 @@ watch(() => route.path, () => {
             :class="{ 'bg-slate-100 text-brand-dark': isCurrent(item.to) }"
             :aria-current="isCurrent(item.to) ? 'page' : undefined"
           >
-            <component
-              :is="navigationIcons[item.to]"
+            <NavIcon
+              :name="navigationIcons[item.to]"
               class="h-5 w-5 shrink-0 text-brand-red"
-              :stroke-width="1.9"
-              aria-hidden="true"
             />
             <span>{{ item.label }}</span>
           </NuxtLink>
