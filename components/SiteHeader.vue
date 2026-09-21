@@ -11,7 +11,9 @@ const navigation = millionasia.getNavigation().filter((item) => item.to !== "/")
 const contact = millionasia.getContact()
 const navigationIcons = {
   "/about": "building",
+  "/council": "landmark",
   "/members": "users",
+  "/mainland-offices": "map-pin",
   "/products": "cable",
   "/resources": "library",
   "/join": "user-plus",
@@ -46,7 +48,7 @@ watch(() => route.path, () => {
     </div>
 
     <div class="bg-white">
-      <div class="container-page flex min-h-[112px] flex-wrap items-center justify-between gap-x-5 py-3 lg:grid lg:min-h-[154px] lg:grid-cols-[minmax(450px,1.1fr)_minmax(520px,1fr)] lg:py-4">
+      <div class="container-page flex min-h-[112px] flex-wrap items-center justify-between gap-x-5 py-3 lg:grid lg:min-h-[154px] lg:grid-cols-[minmax(430px,1fr)_minmax(600px,1.25fr)] lg:py-4">
         <NuxtLink
           to="/"
           class="flex min-w-0 flex-1 items-center gap-4 lg:gap-5"
@@ -78,7 +80,7 @@ watch(() => route.path, () => {
 
         <nav
           id="site-nav"
-          class="hidden basis-full grid-cols-1 gap-1 border-t border-slate-200 pt-3 lg:grid lg:basis-auto lg:grid-cols-3 lg:border-0 lg:pt-0"
+          class="hidden basis-full grid-cols-1 gap-1 border-t border-slate-200 pt-3 lg:grid lg:basis-auto lg:grid-cols-4 lg:border-0 lg:pt-0"
           :class="{ '!grid': isOpen }"
           aria-label="主要導覽"
         >

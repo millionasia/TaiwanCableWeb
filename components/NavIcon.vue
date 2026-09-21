@@ -26,6 +26,15 @@ defineProps({
       <circle cx="9" cy="7" r="4" />
     </template>
 
+    <template v-else-if="name === 'landmark'">
+      <path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M2 8h20L12 2Z" />
+    </template>
+
+    <template v-else-if="name === 'map-pin'">
+      <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+      <circle cx="12" cy="10" r="3" />
+    </template>
+
     <template v-else-if="name === 'cable'">
       <path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z" />
       <path d="M17 21v-2M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10M21 21v-2M3 5V3M7 5V3" />

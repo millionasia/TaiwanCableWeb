@@ -19,7 +19,11 @@ const toneClass = computed(() => {
   <NuxtLink
     to="#"
     class="ad-surface min-h-[104px] bg-gradient-to-br"
-    :class="[toneClass, layout === 'wide' ? 'grid md:min-h-[86px] md:grid-cols-[auto_1fr_auto] md:items-center md:gap-4' : 'grid']"
+    :class="[
+      toneClass,
+      layout === 'wide' ? 'grid md:min-h-[86px] md:grid-cols-[auto_1fr_auto] md:items-center md:gap-4' : 'grid',
+      layout === 'fill' ? 'h-full content-center gap-2' : ''
+    ]"
   >
     <span class="relative z-10 w-fit rounded-full bg-[#d1a34f] px-2 py-0.5 text-[11px] font-black text-brand-ink">{{ ad.label }}</span>
     <strong class="relative z-10 text-xl leading-tight">{{ ad.title }}</strong>

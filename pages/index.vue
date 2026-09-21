@@ -47,7 +47,7 @@ const filteredNews = computed(() => {
     </HeroCarousel>
   </section>
 
-  <section class="border-y border-slate-200 bg-brand-silver py-12">
+  <section class="border-y border-slate-300 bg-[#d7e0e5] py-12">
     <div class="container-page grid gap-6 lg:grid-cols-[184px_1fr]">
       <LeftAdMarquee :ads="ads.leftMarquee" />
 
@@ -101,7 +101,7 @@ const filteredNews = computed(() => {
     </div>
   </section>
 
-  <section class="bg-brand-ink py-16 text-white">
+  <section class="bg-[#20262d] py-16 text-white">
     <div class="container-page">
       <div class="border-b border-white/15 pb-8">
         <div>
