@@ -25,7 +25,7 @@ export class MillionasiaSiteData {
 
     this.footerNavigation = [
       ...this.navigation.filter((item) => item.to !== "/"),
-      { label: "Site Map", to: "/sitemap" }
+      { label: "網站地圖", to: "/sitemap" }
     ]
 
     this.ads = {

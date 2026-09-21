@@ -25,7 +25,7 @@
   - 選單下方橫幅廣告
   - 首頁左側自下而上跑馬廣告
   - 首頁最新消息上方輪播廣告
-- Footer 提供功能 navigation、Site Map 與 AgileWeb 產品標示
+- Footer 提供功能 navigation、網站地圖與 AgileWeb 產品標示
 
 ## 常用指令
 

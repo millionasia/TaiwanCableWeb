@@ -1,13 +1,13 @@
 <script setup>
 import { millionasia } from "~/data/millionasia"
 
-useHead({ title: "Site Map" })
+useHead({ title: "網站地圖" })
 const links = millionasia.getFooterNavigation()
 </script>
 
 <template>
   <PageHero
-    eyebrow="Site Map"
+    eyebrow="網站地圖"
     title="網站導覽"
     description="整理網站主要分頁，作為 footer navigation 的延伸入口，也協助搜尋引擎理解網站架構。"
   />

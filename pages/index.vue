@@ -103,12 +103,11 @@ const filteredNews = computed(() => {
 
   <section class="bg-brand-ink py-16 text-white">
     <div class="container-page">
-      <div class="flex flex-col gap-4 border-b border-white/15 pb-8 md:flex-row md:items-end md:justify-between">
+      <div class="border-b border-white/15 pb-8">
         <div>
           <p class="text-xs font-black uppercase text-red-300">Product Categories</p>
           <h2 class="mt-2 text-4xl font-black">產品分類查詢</h2>
         </div>
-        <p class="max-w-xl leading-7 text-white/70">依八大產品類別瀏覽公會會員主要線材、電纜及相關產品。</p>
       </div>
 
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
