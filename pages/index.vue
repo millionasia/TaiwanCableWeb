@@ -66,6 +66,8 @@ const events = millionasia.events
           </div>
         </section>
 
+        <AdRotator :ads="ads.eventRotator" aria-label="活動看板上方廣告輪播" />
+
         <section class="panel">
           <div class="flex items-end justify-between gap-4 border-b border-slate-200 p-5">
             <div>
@@ -90,7 +92,6 @@ const events = millionasia.events
           </div>
         </section>
 
-        <AdRotator :ads="ads.eventRotator" aria-label="活動看板下方廣告輪播" />
       </div>
     </div>
   </section>

@@ -42,7 +42,7 @@ export class MillionasiaSiteData {
         { label: "AD", title: "工業展會", text: "會員優惠曝光" }
       ],
       eventRotator: [
-        { label: "AD", title: "活動合作夥伴", text: "活動看板下方廣告", tone: "steel" },
+        { label: "AD", title: "活動合作夥伴", text: "活動看板上方廣告", tone: "steel" },
         { label: "AD", title: "線纜產業研討會", text: "報名與品牌曝光", tone: "red" },
         { label: "AD", title: "智慧製造專區", text: "供應鏈合作版位", tone: "dark" }
       ]
