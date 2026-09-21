@@ -44,6 +44,11 @@ defineProps({
       <path d="M19 8v6M22 11h-6" />
     </template>
 
+    <template v-else-if="name === 'search'">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </template>
+
     <template v-else>
       <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
       <rect x="2" y="4" width="20" height="16" rx="2" />

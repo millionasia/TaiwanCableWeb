@@ -32,13 +32,18 @@ watch(() => route.path, () => {
     <div class="bg-brand-graphite text-xs text-white/80">
       <div class="container-page flex min-h-9 items-center justify-end gap-4 whitespace-nowrap">
         <span class="hidden md:inline">{{ contact.address }}</span>
-        <a :href="`mailto:${contact.email}`">{{ contact.email }}</a>
+        <a class="hidden md:inline" :href="`mailto:${contact.email}`">{{ contact.email }}</a>
         <a :href="`tel:+${contact.phone.replace(/-/g, '')}`">{{ contact.phone }}</a>
+        <nav class="flex items-center gap-2 font-black text-white" aria-label="語系選擇">
+          <NuxtLink :to="route.path" lang="zh-Hant" aria-current="page">繁中</NuxtLink>
+          <span class="text-white/40" aria-hidden="true">|</span>
+          <a href="https://www.taiwancable.org.tw/" lang="en">ENG</a>
+        </nav>
       </div>
     </div>
 
     <div class="bg-white">
-      <div class="container-page flex min-h-[88px] flex-wrap items-center justify-between gap-x-5 py-3 lg:grid lg:min-h-[124px] lg:grid-cols-[minmax(330px,1fr)_minmax(520px,1.25fr)] lg:py-4">
+      <div class="container-page flex min-h-[112px] flex-wrap items-center justify-between gap-x-5 py-3 lg:grid lg:min-h-[154px] lg:grid-cols-[minmax(450px,1.1fr)_minmax(520px,1fr)] lg:py-4">
         <NuxtLink
           to="/"
           class="flex min-w-0 flex-1 items-center gap-4 lg:gap-5"
@@ -47,7 +52,7 @@ watch(() => route.path, () => {
           <img
             :src="brand.logo"
             :alt="brand.name"
-            class="h-14 w-14 shrink-0 bg-white object-contain sm:h-16 sm:w-16 lg:h-[76px] lg:w-[76px]"
+            class="h-[84px] w-[84px] shrink-0 bg-white object-contain sm:h-24 sm:w-24 lg:h-[114px] lg:w-[114px]"
           >
           <span class="grid min-w-0 gap-1">
             <strong class="text-base leading-tight text-brand-ink sm:text-xl lg:text-2xl">{{ brand.name }}</strong>

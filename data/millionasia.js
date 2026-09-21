@@ -24,7 +24,7 @@ export class MillionasiaSiteData {
     ]
 
     this.footerNavigation = [
-      ...this.navigation,
+      ...this.navigation.filter((item) => item.to !== "/"),
       { label: "Site Map", to: "/sitemap" }
     ]
 
@@ -54,15 +54,8 @@ export class MillionasiaSiteData {
         { src: "/images/hero-cable-lab.png", alt: "高壓電纜剖面與專業檢測設備" },
         { src: "/images/hero-cable-factory.png", alt: "電纜製造工廠與大型成品電纜剖面" }
       ],
-      eyebrow: "Industry Portal",
       title: "臺灣區電線電纜服務入口",
-      lead: "以專業、穩定、可維護的多頁式網站架構，整合會員查詢、產品分類、LME 行情、統計資料、公告與活動。",
-      services: [
-        { index: "01", title: "會員查詢", text: "依公司名稱、地區與產品類別搜尋會員。", to: "/members" },
-        { index: "02", title: "產品分類", text: "整理裸銅線、電力電纜、通信電纜與特殊線材。", to: "/products" },
-        { index: "03", title: "資料中心", text: "LME 行情、產銷統計、公告與活動資料。", to: "/resources" },
-        { index: "04", title: "申請入會", text: "提供正式會員與贊助會員申請流程。", to: "/join" }
-      ]
+      lead: "以專業、穩定、可維護的多頁式網站架構，整合會員查詢、產品分類、LME 行情、統計資料、公告與活動。"
     }
 
     this.newsCategories = ["休市公告", "金屬月刊", "公會公告", "產業動態", "法規標準", "活動訊息"]

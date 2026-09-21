@@ -7,7 +7,9 @@ const home = millionasia.home
 const ads = millionasia.getAds()
 const newsCategories = millionasia.newsCategories
 const latestNews = millionasia.latestNews
+const products = millionasia.getProducts()
 const activeCategory = ref("全部")
+const productKeyword = ref("")
 
 const filteredNews = computed(() => {
   const news = activeCategory.value === "全部"
@@ -16,6 +18,15 @@ const filteredNews = computed(() => {
 
   return news.slice(0, 6)
 })
+
+const filteredProducts = computed(() => {
+  const keyword = productKeyword.value.trim().toLocaleLowerCase("zh-TW")
+  if (!keyword) return products
+
+  return products.filter((product) => {
+    return `${product.title} ${product.text}`.toLocaleLowerCase("zh-TW").includes(keyword)
+  })
+})
 </script>
 
 <template>
@@ -23,21 +34,12 @@ const filteredNews = computed(() => {
     <HeroCarousel :images="home.heroImages">
       <div class="container-page flex min-h-[520px] items-center py-14 md:min-h-[560px] md:py-16">
         <div class="max-w-3xl pb-10 sm:pb-0">
-          <p class="text-xs font-black uppercase text-red-300">{{ home.eyebrow }}</p>
-          <h1 class="mt-3 max-w-3xl text-4xl font-black leading-tight text-white md:text-6xl">
-          {{ home.title }}
+          <h1 class="max-w-3xl text-4xl font-black leading-tight text-white md:text-6xl">
+            {{ home.title }}
           </h1>
           <p class="mt-5 max-w-2xl text-lg leading-8 text-white/85">
             {{ home.lead }}
           </p>
-          <div class="mt-7 flex flex-wrap gap-3">
-            <NuxtLink to="/members" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-brand-red px-5 font-black text-white hover:bg-red-700">
-              會員查詢
-            </NuxtLink>
-            <NuxtLink to="/resources" class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/70 bg-black/30 px-5 font-black text-white backdrop-blur-sm hover:bg-white hover:text-brand-ink">
-              資料中心
-            </NuxtLink>
-          </div>
         </div>
       </div>
     </HeroCarousel>
@@ -97,16 +99,48 @@ const filteredNews = computed(() => {
     </div>
   </section>
 
-  <section class="py-16">
-    <div class="container-page">
-      <p class="eyebrow">Main Services</p>
-      <h2 class="text-4xl font-black">主要服務</h2>
-      <div class="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <NuxtLink v-for="service in home.services" :key="service.title" :to="service.to" class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm hover:bg-slate-50">
-          <span class="grid h-11 w-11 place-items-center rounded-full bg-brand-ink font-black text-white">{{ service.index }}</span>
-          <h3 class="mt-7 text-xl font-black">{{ service.title }}</h3>
-          <p class="mt-2 text-slate-600">{{ service.text }}</p>
-        </NuxtLink>
+  <section class="relative overflow-hidden bg-brand-ink py-16 text-white">
+    <img src="/images/hero-cable-lab.png" alt="" class="absolute inset-0 h-full w-full object-cover opacity-30" aria-hidden="true">
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-ink via-brand-ink/90 to-black/60" aria-hidden="true" />
+
+    <div class="container-page relative z-10">
+      <div class="grid gap-8 lg:grid-cols-[360px_1fr] lg:items-start">
+        <div>
+          <p class="text-xs font-black uppercase text-red-300">Product Search</p>
+          <h2 class="mt-2 text-4xl font-black">產品分類查詢</h2>
+          <p class="mt-4 leading-7 text-white/75">輸入產品名稱或用途，快速篩選公會會員主要產品類別。</p>
+
+          <label for="product-search" class="sr-only">搜尋產品分類</label>
+          <div class="mt-6 flex min-h-12 items-center gap-3 rounded-lg border border-white/25 bg-black/35 px-4 backdrop-blur-sm focus-within:border-white">
+            <NavIcon name="search" class="h-5 w-5 shrink-0 text-red-300" />
+            <input
+              id="product-search"
+              v-model="productKeyword"
+              type="search"
+              placeholder="例如：高壓電纜、銅線、電子線"
+              class="min-w-0 flex-1 bg-transparent py-3 text-white outline-none placeholder:text-white/50"
+            >
+          </div>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+          <NuxtLink
+            v-for="product in filteredProducts"
+            :key="product.index"
+            :to="{ path: '/products', query: { category: product.title } }"
+            class="group flex min-h-[112px] gap-4 rounded-lg border border-white/20 bg-black/35 p-4 backdrop-blur-sm transition hover:border-red-300 hover:bg-black/55"
+          >
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-red text-sm font-black text-white">{{ product.index }}</span>
+            <span class="min-w-0">
+              <strong class="text-lg text-white group-hover:text-red-200">{{ product.title }}</strong>
+              <span class="mt-1 block text-sm leading-6 text-white/65">{{ product.text }}</span>
+            </span>
+          </NuxtLink>
+
+          <p v-if="filteredProducts.length === 0" class="rounded-lg border border-white/20 bg-black/35 p-5 text-white/75 sm:col-span-2">
+            找不到符合「{{ productKeyword }}」的產品分類。
+          </p>
+        </div>
       </div>
     </div>
   </section>
