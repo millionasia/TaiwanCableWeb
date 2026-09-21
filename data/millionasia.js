@@ -57,11 +57,6 @@ export class MillionasiaSiteData {
       eyebrow: "Industry Portal",
       title: "臺灣區電線電纜服務入口",
       lead: "以專業、穩定、可維護的多頁式網站架構，整合會員查詢、產品分類、LME 行情、統計資料、公告與活動。",
-      stats: [
-        { value: "8", label: "產品分類" },
-        { value: "RWD", label: "手機友善" },
-        { value: "AD", label: "廣告版位保留" }
-      ],
       services: [
         { index: "01", title: "會員查詢", text: "依公司名稱、地區與產品類別搜尋會員。", to: "/members" },
         { index: "02", title: "產品分類", text: "整理裸銅線、電力電纜、通信電纜與特殊線材。", to: "/products" },

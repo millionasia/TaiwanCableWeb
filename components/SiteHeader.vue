@@ -1,4 +1,5 @@
 <script setup>
+import { Building2, Cable, LibraryBig, Mail, UserPlus, Users } from "@lucide/vue"
 import { millionasia } from "~/data/millionasia"
 
 defineProps({
@@ -7,11 +8,18 @@ defineProps({
 
 const route = useRoute()
 const isOpen = ref(false)
-const navigation = millionasia.getNavigation()
+const navigation = millionasia.getNavigation().filter((item) => item.to !== "/")
 const contact = millionasia.getContact()
+const navigationIcons = {
+  "/about": Building2,
+  "/members": Users,
+  "/products": Cable,
+  "/resources": LibraryBig,
+  "/join": UserPlus,
+  "/contact": Mail
+}
 
 const isCurrent = (to) => {
-  if (to === "/") return route.path === "/"
   return route.path.startsWith(to)
 }
 
@@ -30,26 +38,26 @@ watch(() => route.path, () => {
       </div>
     </div>
 
-    <div class="border-b border-slate-200 bg-white">
-      <div class="container-page flex min-h-[88px] items-center justify-between gap-5 py-3 md:min-h-[104px]">
+    <div class="bg-white">
+      <div class="container-page flex min-h-[88px] flex-wrap items-center justify-between gap-x-5 py-3 lg:grid lg:min-h-[124px] lg:grid-cols-[minmax(330px,1fr)_minmax(520px,1.25fr)] lg:py-4">
         <NuxtLink
           to="/"
-          class="flex min-w-0 flex-1 items-center gap-4 md:gap-5"
+          class="flex min-w-0 flex-1 items-center gap-4 lg:gap-5"
           aria-label="臺灣區電線電纜工業同業公會首頁"
         >
-        <img
-          :src="brand.logo"
-          :alt="brand.name"
-          class="h-14 w-14 shrink-0 bg-white object-contain md:h-[72px] md:w-[72px]"
-        >
-        <span class="grid min-w-0 gap-1">
-          <strong class="text-base leading-tight text-brand-ink sm:text-xl md:text-2xl">{{ brand.name }}</strong>
-          <small class="hidden text-sm font-semibold text-brand-steel sm:block md:text-base">{{ brand.englishName }}</small>
-        </span>
+          <img
+            :src="brand.logo"
+            :alt="brand.name"
+            class="h-14 w-14 shrink-0 bg-white object-contain sm:h-16 sm:w-16 lg:h-[76px] lg:w-[76px]"
+          >
+          <span class="grid min-w-0 gap-1">
+            <strong class="text-base leading-tight text-brand-ink sm:text-xl lg:text-2xl">{{ brand.name }}</strong>
+            <small class="hidden text-sm font-semibold text-brand-steel sm:block">{{ brand.englishName }}</small>
+          </span>
         </NuxtLink>
 
         <button
-          class="inline-flex shrink-0 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 font-black text-brand-ink md:hidden"
+          class="inline-flex shrink-0 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 font-black text-brand-ink lg:hidden"
           type="button"
           :aria-expanded="isOpen"
           aria-controls="site-nav"
@@ -60,27 +68,31 @@ watch(() => route.path, () => {
           </svg>
           選單
         </button>
-      </div>
-    </div>
 
-    <div class="bg-slate-50">
-      <nav
-        id="site-nav"
-        class="container-page hidden gap-1 py-2 md:flex md:min-h-[54px] md:items-center"
-        :class="{ '!grid': isOpen }"
-        aria-label="主要導覽"
-      >
-        <NuxtLink
-          v-for="item in navigation"
-          :key="item.to"
-          :to="item.to"
-          class="rounded-lg px-4 py-2.5 text-sm font-black text-slate-700 hover:bg-white hover:text-brand-dark"
-          :class="{ 'bg-white text-brand-dark shadow-sm': isCurrent(item.to) }"
-          :aria-current="isCurrent(item.to) ? 'page' : undefined"
+        <nav
+          id="site-nav"
+          class="hidden basis-full grid-cols-1 gap-1 border-t border-slate-200 pt-3 lg:grid lg:basis-auto lg:grid-cols-3 lg:border-0 lg:pt-0"
+          :class="{ '!grid': isOpen }"
+          aria-label="主要導覽"
         >
-          {{ item.label }}
-        </NuxtLink>
-      </nav>
+          <NuxtLink
+            v-for="item in navigation"
+            :key="item.to"
+            :to="item.to"
+            class="flex min-h-11 items-center gap-2 rounded-lg px-3 py-2 text-sm font-black text-slate-700 transition hover:bg-slate-100 hover:text-brand-dark"
+            :class="{ 'bg-slate-100 text-brand-dark': isCurrent(item.to) }"
+            :aria-current="isCurrent(item.to) ? 'page' : undefined"
+          >
+            <component
+              :is="navigationIcons[item.to]"
+              class="h-5 w-5 shrink-0 text-brand-red"
+              :stroke-width="1.9"
+              aria-hidden="true"
+            />
+            <span>{{ item.label }}</span>
+          </NuxtLink>
+        </nav>
+      </div>
     </div>
   </header>
 </template>

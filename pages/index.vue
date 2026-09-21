@@ -19,34 +19,28 @@ const filteredNews = computed(() => {
 </script>
 
 <template>
-  <section class="bg-gradient-to-b from-white to-slate-50 py-12 md:py-16">
-    <div class="container-page grid items-center gap-10 lg:grid-cols-[1fr_520px]">
-      <div class="order-2 lg:order-1">
-        <p class="eyebrow">{{ home.eyebrow }}</p>
-        <h1 class="max-w-3xl text-4xl font-black leading-tight text-brand-ink md:text-6xl">
+  <section aria-label="首頁主視覺">
+    <HeroCarousel :images="home.heroImages">
+      <div class="container-page flex min-h-[520px] items-center py-14 md:min-h-[560px] md:py-16">
+        <div class="max-w-3xl pb-10 sm:pb-0">
+          <p class="text-xs font-black uppercase text-red-300">{{ home.eyebrow }}</p>
+          <h1 class="mt-3 max-w-3xl text-4xl font-black leading-tight text-white md:text-6xl">
           {{ home.title }}
-        </h1>
-        <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-700">
-          {{ home.lead }}
-        </p>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <NuxtLink to="/members" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-brand-dark px-5 font-black text-white hover:bg-brand-red">
-            會員查詢
-          </NuxtLink>
-          <NuxtLink to="/resources" class="inline-flex min-h-12 items-center justify-center rounded-lg border border-slate-300 bg-white px-5 font-black text-brand-ink hover:border-slate-400">
-            資料中心
-          </NuxtLink>
-        </div>
-        <dl class="mt-8 grid gap-3 sm:grid-cols-3">
-          <div v-for="stat in home.stats" :key="stat.label" class="rounded-lg border border-slate-200 bg-white p-4">
-            <dt class="text-2xl font-black text-brand-dark">{{ stat.value }}</dt>
-            <dd class="font-black text-brand-steel">{{ stat.label }}</dd>
+          </h1>
+          <p class="mt-5 max-w-2xl text-lg leading-8 text-white/85">
+            {{ home.lead }}
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <NuxtLink to="/members" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-brand-red px-5 font-black text-white hover:bg-red-700">
+              會員查詢
+            </NuxtLink>
+            <NuxtLink to="/resources" class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/70 bg-black/30 px-5 font-black text-white backdrop-blur-sm hover:bg-white hover:text-brand-ink">
+              資料中心
+            </NuxtLink>
           </div>
-        </dl>
+        </div>
       </div>
-
-      <HeroCarousel class="order-1 lg:order-2" :images="home.heroImages" />
-    </div>
+    </HeroCarousel>
   </section>
 
   <section class="border-y border-slate-200 bg-brand-silver py-12">

@@ -23,7 +23,7 @@ onBeforeUnmount(() => window.clearInterval(timer))
 
 <template>
   <figure
-    class="relative aspect-[16/10] overflow-hidden rounded-lg bg-brand-ink shadow-steel"
+    class="relative min-h-[520px] overflow-hidden bg-brand-ink md:min-h-[560px]"
     aria-label="電線電纜產業主視覺輪播"
     @mouseenter="isPaused = true"
     @mouseleave="isPaused = false"
@@ -33,33 +33,42 @@ onBeforeUnmount(() => window.clearInterval(timer))
       :key="image.src"
       :src="image.src"
       :alt="image.alt"
-      class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
+      class="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700"
       :class="index === activeIndex ? 'opacity-100' : 'pointer-events-none opacity-0'"
     >
 
-    <button
-      type="button"
-      class="absolute left-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white transition hover:bg-brand-red focus:outline-none focus:ring-4 focus:ring-white/60"
-      aria-label="上一張主視覺"
-      @click="showSlide(activeIndex - 1)"
-    >
-      <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="m15 18-6-6 6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-      </svg>
-    </button>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/10" aria-hidden="true" />
+    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/55 to-transparent" aria-hidden="true" />
 
-    <button
-      type="button"
-      class="absolute right-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white transition hover:bg-brand-red focus:outline-none focus:ring-4 focus:ring-white/60"
-      aria-label="下一張主視覺"
-      @click="showSlide(activeIndex + 1)"
-    >
-      <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-      </svg>
-    </button>
+    <div class="relative z-10">
+      <slot />
+    </div>
 
-    <div class="absolute inset-x-0 bottom-4 flex justify-center gap-2" aria-label="選擇主視覺">
+    <div class="absolute bottom-5 right-5 z-20 flex gap-2">
+      <button
+        type="button"
+        class="grid h-10 w-10 place-items-center rounded-full bg-black/60 text-white transition hover:bg-brand-red focus:outline-none focus:ring-4 focus:ring-white/60"
+        aria-label="上一張主視覺"
+        @click="showSlide(activeIndex - 1)"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m15 18-6-6 6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="grid h-10 w-10 place-items-center rounded-full bg-black/60 text-white transition hover:bg-brand-red focus:outline-none focus:ring-4 focus:ring-white/60"
+        aria-label="下一張主視覺"
+        @click="showSlide(activeIndex + 1)"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="absolute bottom-7 left-5 z-20 flex gap-2" aria-label="選擇主視覺">
       <button
         v-for="(image, index) in images"
         :key="`dot-${image.src}`"
