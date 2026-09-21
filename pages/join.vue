@@ -12,7 +12,7 @@ const steps = millionasia.membershipSteps
     description="協助有意加入公會的廠商理解申請條件、資料準備與審查流程。"
   />
   <section class="py-16">
-    <div class="container-page grid gap-6 lg:grid-cols-[1fr_300px]">
+    <div class="container-page">
       <article class="panel p-7">
         <h2 class="text-3xl font-black">入會流程</h2>
         <ol class="mt-6 grid gap-4">
@@ -26,7 +26,6 @@ const steps = millionasia.membershipSteps
           聯絡公會窗口
         </NuxtLink>
       </article>
-      <AdRail />
     </div>
   </section>
 </template>

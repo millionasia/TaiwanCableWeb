@@ -13,7 +13,7 @@ const downloads = millionasia.downloads
     description="集中呈現 LME 銅價、產業文件、標準規範與會員常用下載資料。"
   />
   <section class="py-16">
-    <div class="container-page grid gap-6 lg:grid-cols-[1fr_300px]">
+    <div class="container-page">
       <div class="grid gap-5">
         <section class="panel">
           <div class="flex items-center justify-between border-b border-slate-200 p-5">
@@ -41,7 +41,6 @@ const downloads = millionasia.downloads
           </div>
         </section>
       </div>
-      <AdRail />
     </div>
   </section>
 </template>

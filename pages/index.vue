@@ -43,12 +43,10 @@ const events = millionasia.events
   </section>
 
   <section class="border-y border-slate-200 bg-brand-silver py-12">
-    <div class="container-page grid gap-6 lg:grid-cols-[184px_1fr_300px]">
+    <div class="container-page grid gap-6 lg:grid-cols-[184px_1fr]">
       <LeftAdMarquee :ads="ads.leftMarquee" />
 
       <div class="grid gap-5">
-        <AdRotator :ads="ads.noticeRotator" aria-label="重要通知上方廣告輪播" />
-
         <section class="panel">
           <div class="flex items-end justify-between gap-4 border-b border-slate-200 p-5">
             <div>
@@ -94,8 +92,6 @@ const events = millionasia.events
 
         <AdRotator :ads="ads.eventRotator" aria-label="活動看板下方廣告輪播" />
       </div>
-
-      <AdRail />
     </div>
   </section>
 

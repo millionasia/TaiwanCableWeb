@@ -35,22 +35,11 @@ export class MillionasiaSiteData {
         text: "選單下方橫幅廣告",
         tone: "steel"
       },
-      rightRail: [
-        { label: "AD", title: "智慧電網材料", text: "右側廣告版位", tone: "steel" },
-        { label: "AD", title: "檢測認證服務", text: "會員供應鏈專區", tone: "silver" },
-        { label: "AD", title: "設備與材料展", text: "展會合作版位", tone: "dark" },
-        { label: "AD", title: "產業顧問服務", text: "第四格廣告版位", tone: "red" }
-      ],
       leftMarquee: [
         { label: "AD", title: "導體材料", text: "高純度銅材供應" },
         { label: "AD", title: "線纜設備", text: "智慧製程升級" },
         { label: "AD", title: "檢驗測試", text: "品質認證服務" },
         { label: "AD", title: "工業展會", text: "會員優惠曝光" }
-      ],
-      noticeRotator: [
-        { label: "AD", title: "產業服務推薦", text: "重要通知上方廣告", tone: "steel" },
-        { label: "AD", title: "材料檢測與認證", text: "會員專屬曝光版位", tone: "silver" },
-        { label: "AD", title: "電纜製程升級", text: "設備商合作廣告", tone: "red" }
       ],
       eventRotator: [
         { label: "AD", title: "活動合作夥伴", text: "活動看板下方廣告", tone: "steel" },

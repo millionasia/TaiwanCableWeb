@@ -33,7 +33,7 @@ const resetFilters = () => {
     description="提供會員廠商查詢、地區篩選與產品分類檢索，協助訪客快速找到合作對象。"
   />
   <section class="py-16">
-    <div class="container-page grid gap-6 lg:grid-cols-[1fr_300px]">
+    <div class="container-page">
       <div class="grid gap-5">
         <form class="panel grid gap-4 p-5 md:grid-cols-[1fr_200px] md:items-end" role="search">
           <label class="grid gap-2">
@@ -97,7 +97,6 @@ const resetFilters = () => {
           <p v-if="filteredMembers.length === 0" class="p-6 text-slate-600">沒有符合篩選條件的資料。</p>
         </section>
       </div>
-      <AdRail />
     </div>
   </section>
 </template>

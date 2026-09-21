@@ -9,7 +9,7 @@ useHead({ title: "關於公會" })
     description="整合會員服務、產業資訊與公會公告，建立清楚、專業且符合現代瀏覽需求的產業入口。"
   />
   <section class="py-16">
-    <div class="container-page grid gap-6 lg:grid-cols-[1fr_300px]">
+    <div class="container-page">
       <article class="panel p-7">
         <h2 class="text-3xl font-black">公會定位</h2>
         <p class="mt-4 text-lg leading-8 text-slate-700">
@@ -30,7 +30,6 @@ useHead({ title: "關於公會" })
           </div>
         </div>
       </article>
-      <AdRail />
     </div>
   </section>
 </template>
