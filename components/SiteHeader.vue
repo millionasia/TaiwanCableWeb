@@ -35,7 +35,10 @@ watch(() => route.path, () => {
         <a class="hidden md:inline" :href="`mailto:${contact.email}`">{{ contact.email }}</a>
         <a :href="`tel:+${contact.phone.replace(/-/g, '')}`">{{ contact.phone }}</a>
         <nav class="flex items-center gap-2 font-black text-white" aria-label="語系選擇">
-          <NuxtLink :to="route.path" lang="zh-Hant" aria-current="page">繁中</NuxtLink>
+          <NuxtLink :to="route.path" class="inline-flex items-center gap-1.5" lang="zh-Hant" aria-current="page">
+            <NavIcon name="globe" class="h-4 w-4" />
+            <span>繁中</span>
+          </NuxtLink>
           <span class="text-white/40" aria-hidden="true">|</span>
           <a href="https://www.taiwancable.org.tw/" lang="en">ENG</a>
         </nav>
@@ -52,7 +55,7 @@ watch(() => route.path, () => {
           <img
             :src="brand.logo"
             :alt="brand.name"
-            class="h-[84px] w-[84px] shrink-0 bg-white object-contain sm:h-24 sm:w-24 lg:h-[114px] lg:w-[114px]"
+            class="h-[63px] w-[63px] shrink-0 bg-white object-contain sm:h-[72px] sm:w-[72px] lg:h-[86px] lg:w-[86px]"
           >
           <span class="grid min-w-0 gap-1">
             <strong class="text-base leading-tight text-brand-ink sm:text-xl lg:text-2xl">{{ brand.name }}</strong>
@@ -83,7 +86,7 @@ watch(() => route.path, () => {
             v-for="item in navigation"
             :key="item.to"
             :to="item.to"
-            class="flex min-h-11 items-center gap-2 rounded-lg px-3 py-2 text-sm font-black text-slate-700 transition hover:bg-slate-100 hover:text-brand-dark"
+            class="flex min-h-11 items-center gap-2 rounded-lg px-3 py-2 text-[14px] font-black text-slate-700 transition hover:bg-slate-100 hover:text-brand-dark"
             :class="{ 'bg-slate-100 text-brand-dark': isCurrent(item.to) }"
             :aria-current="isCurrent(item.to) ? 'page' : undefined"
           >

@@ -49,6 +49,35 @@ defineProps({
       <path d="m21 21-4.3-4.3" />
     </template>
 
+    <template v-else-if="name === 'globe'">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20" />
+    </template>
+
+    <template v-else-if="name === 'network'">
+      <rect x="9" y="2" width="6" height="5" rx="1" />
+      <rect x="2" y="17" width="6" height="5" rx="1" />
+      <rect x="16" y="17" width="6" height="5" rx="1" />
+      <path d="M12 7v5M5 17v-2a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v2" />
+    </template>
+
+    <template v-else-if="name === 'document'">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+      <path d="M14 2v6h6M8 13h8M8 17h6" />
+    </template>
+
+    <template v-else-if="name === 'briefcase'">
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2" />
+    </template>
+
+    <template v-else-if="name === 'diagram'">
+      <circle cx="5" cy="12" r="3" />
+      <circle cx="19" cy="5" r="3" />
+      <circle cx="19" cy="19" r="3" />
+      <path d="m8 11 8-4M8 13l8 4" />
+    </template>
+
     <template v-else>
       <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
       <rect x="2" y="4" width="20" height="16" rx="2" />

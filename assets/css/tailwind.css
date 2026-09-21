@@ -10,6 +10,7 @@
   body {
     @apply bg-white text-brand-ink antialiased;
     font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
+    overflow-x: clip;
   }
 }
 
