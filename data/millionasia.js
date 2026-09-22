@@ -3,7 +3,7 @@ export class MillionasiaSiteData {
     this.brand = {
       name: "臺灣區電線電纜工業同業公會",
       englishName: "Taiwan Electric Wire & Cable Industries Association",
-      logo: "/images/logo.jpg"
+      logo: "/images/logo.svg"
     }
 
     this.contact = {

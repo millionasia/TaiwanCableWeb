@@ -10,9 +10,9 @@ const footerNavigation = millionasia.getFooterNavigation()
   <footer class="bg-brand-ink pt-12 text-white/75">
     <div class="container-page grid gap-8 md:grid-cols-2 lg:grid-cols-[1.1fr_.9fr_1fr]">
       <NuxtLink to="/" class="flex min-w-0 items-start gap-4" aria-label="回到首頁">
-        <img :src="brand.logo" :alt="brand.name" class="h-16 w-16 shrink-0 bg-white object-contain">
+        <img :src="brand.logo" :alt="brand.name" class="h-16 w-16 shrink-0 object-contain">
         <span class="grid gap-1">
-          <strong class="text-white">{{ brand.name }}</strong>
+          <span class="text-white">{{ brand.name }}</span>
           <small class="text-white/70">{{ brand.englishName }}</small>
         </span>
       </NuxtLink>
@@ -25,7 +25,7 @@ const footerNavigation = millionasia.getFooterNavigation()
       </address>
 
       <nav class="flex flex-wrap content-start gap-x-5 gap-y-3" aria-label="Footer 功能導覽">
-        <NuxtLink v-for="item in footerNavigation" :key="item.to" :to="item.to" class="font-black text-white hover:text-red-200">
+        <NuxtLink v-for="item in footerNavigation" :key="item.to" :to="item.to" class="font-normal text-white hover:text-red-200">
           {{ item.label }}
         </NuxtLink>
       </nav>
@@ -36,7 +36,7 @@ const footerNavigation = millionasia.getFooterNavigation()
         <span>Copyright © 2026 臺灣區電線電纜工業同業公會</span>
         <span>
           Powered by
-          <a class="mx-1 font-black text-white hover:text-red-200" href="https://www.millionasia.com/product.jsp">AgileWeb</a>
+          <a class="mx-1 font-normal text-white hover:text-red-200" href="https://www.millionasia.com/product.jsp">AgileWeb</a>
           AI-Driven Website Builder
         </span>
       </div>

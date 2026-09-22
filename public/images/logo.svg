@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1103 1103" role="img" aria-labelledby="title">
+  <title id="title">臺灣區電線電纜工業同業公會標誌</title>
+  <g fill="#e60012">
+    <circle cx="551.5" cy="230" r="151" />
+    <circle cx="264" cy="390" r="151" />
+    <circle cx="839" cy="390" r="151" />
+    <circle cx="551.5" cy="550.5" r="151" />
+    <circle cx="264" cy="710" r="151" />
+    <circle cx="839" cy="710" r="151" />
+    <circle cx="551.5" cy="870" r="151" />
+  </g>
+  <g fill="none" stroke="#e60012">
+    <circle cx="551.5" cy="551.5" r="509" stroke-width="8" />
+    <circle cx="551.5" cy="551.5" r="540" stroke-width="8" />
+  </g>
+</svg>

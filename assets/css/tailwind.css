@@ -45,6 +45,14 @@
   animation-play-state: paused;
 }
 
+.mobile-ad-marquee-track {
+  animation: ad-scroll-left 20s linear infinite;
+}
+
+.mobile-ad-marquee:hover .mobile-ad-marquee-track {
+  animation-play-state: paused;
+}
+
 .ad-rotator {
   perspective: 900px;
 }
@@ -75,6 +83,34 @@
 
   to {
     transform: translateY(-50%);
+  }
+}
+
+@keyframes ad-scroll-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ad-marquee-track,
+  .mobile-ad-marquee-track {
+    animation: none;
+    transform: none;
+  }
+
+  .ad-rotator-item {
+    animation: none;
+    opacity: 0;
+    transform: none;
+  }
+
+  .ad-rotator-item:first-child {
+    opacity: 1;
   }
 }
 

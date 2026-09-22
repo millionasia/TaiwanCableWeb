@@ -49,7 +49,7 @@ const filteredNews = computed(() => {
 
   <section class="border-y border-slate-300 bg-[#d7e0e5] py-12">
     <div class="container-page grid gap-6 lg:grid-cols-[184px_1fr]">
-      <LeftAdMarquee :ads="ads.leftMarquee" />
+      <LeftAdMarquee :ads="ads.leftMarquee" class="hidden lg:block" />
 
       <div class="grid gap-5">
         <AdRotator :ads="ads.newsRotator" aria-label="最新消息上方廣告輪播" />
@@ -101,21 +101,27 @@ const filteredNews = computed(() => {
     </div>
   </section>
 
-  <section class="bg-[#20262d] py-16 text-white">
+  <section class="bg-[#d7e0e5] py-5 lg:hidden" aria-label="產品分類上方廣告">
     <div class="container-page">
-      <div class="border-b border-white/15 pb-8">
+      <MobileAdMarquee :ads="ads.leftMarquee" />
+    </div>
+  </section>
+
+  <section class="bg-[#20262d] py-10 text-white sm:py-14 lg:py-16">
+    <div class="container-page">
+      <div class="border-b border-white/15 pb-5 sm:pb-8">
         <div>
           <p class="text-xs font-black uppercase text-red-300">Product Categories</p>
-          <h2 class="mt-2 text-4xl font-black">產品分類查詢</h2>
+          <h2 class="mt-2 text-3xl font-black sm:text-4xl">產品分類查詢</h2>
         </div>
       </div>
 
-      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="mt-5 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
         <NuxtLink
           v-for="product in products"
           :key="product.index"
           :to="{ path: '/products', query: { category: product.title } }"
-          class="group relative min-h-[218px] overflow-hidden rounded-lg border border-white/15 p-5 transition hover:-translate-y-1 hover:border-red-300 hover:shadow-2xl"
+          class="group relative min-h-[160px] overflow-hidden rounded-lg border border-white/15 p-4 transition hover:-translate-y-1 hover:border-red-300 hover:shadow-2xl sm:min-h-[190px] sm:p-5 lg:min-h-[218px]"
           :class="productTones[product.index]"
         >
           <ProductCategoryPattern :index="product.index" />

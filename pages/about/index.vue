@@ -35,7 +35,7 @@ const content = millionasia.getAboutContent().introduction
       <aside class="grid gap-6">
         <section class="rounded-lg border border-slate-200 bg-slate-50 p-6">
           <div class="flex items-center gap-4">
-            <img src="/images/logo.jpg" alt="公會標誌" class="h-20 w-20 bg-white object-contain">
+            <img src="/images/logo.svg" alt="公會標誌" class="h-20 w-20 object-contain">
             <div>
               <p class="eyebrow">Identity</p>
               <h2 class="text-2xl font-black">公會標誌</h2>
