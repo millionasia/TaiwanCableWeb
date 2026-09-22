@@ -1,7 +1,7 @@
 <script setup>
 import { millionasia } from "~/data/millionasia"
 
-useHead({ title: "會員查詢" })
+useHead({ title: "會員廠商綜合查詢" })
 
 const keyword = ref("")
 const city = ref("")
@@ -29,7 +29,7 @@ const resetFilters = () => {
 <template>
   <PageHero
     eyebrow="Member Directory"
-    title="會員查詢"
+    title="會員廠商綜合查詢"
     description="提供會員廠商查詢、地區篩選與產品分類檢索，協助訪客快速找到合作對象。"
   />
   <section class="py-16">

@@ -1,7 +1,7 @@
 <script setup>
 import { millionasia } from "~/data/millionasia"
 
-useHead({ title: "金屬資料統計" })
+useHead({ title: "金屬統計資料" })
 
 const statistics = millionasia.getMetalStatistics()
 const activeCategory = ref("全部資料")
@@ -21,7 +21,7 @@ const filteredRecords = computed(() => {
 <template>
   <PageHero
     eyebrow="Metal Statistics"
-    title="金屬資料統計"
+    title="金屬統計資料"
     description="查詢 LME 每日行情、金屬月刊、產銷統計及歷史價格走勢圖。"
   />
 

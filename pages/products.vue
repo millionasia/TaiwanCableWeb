@@ -1,15 +1,15 @@
 <script setup>
 import { millionasia } from "~/data/millionasia"
 
-useHead({ title: "產品分類" })
+useHead({ title: "會員廠商分類查詢" })
 const products = millionasia.getProducts()
 </script>
 
 <template>
   <PageHero
     eyebrow="Product Category"
-    title="產品分類"
-    description="整理會員主要產品類型，協助採購單位與產業夥伴快速找到合適供應商。"
+    title="會員廠商分類查詢"
+    description="依八大產品類別瀏覽會員主要產品，協助採購單位與產業夥伴快速找到合適供應商。"
   />
   <section class="py-16">
     <div class="container-page">

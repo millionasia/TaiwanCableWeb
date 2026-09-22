@@ -38,7 +38,7 @@
 }
 
 .ad-marquee-track {
-  animation: ad-scroll-up 20s linear infinite;
+  animation: ad-scroll-up var(--marquee-duration, 20s) linear infinite;
 }
 
 .ad-marquee:hover .ad-marquee-track {

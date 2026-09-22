@@ -4,7 +4,11 @@ import { millionasia } from "~/data/millionasia"
 useHead({ title: "倫敦金屬價格" })
 
 const prices = millionasia.getMetalPrices()
-const activeMetalId = ref(prices.metals[0].id)
+const route = useRoute()
+const router = useRouter()
+const metalIds = prices.metals.map((metal) => metal.id)
+const requestedMetalId = Array.isArray(route.query.metal) ? route.query.metal[0] : route.query.metal
+const activeMetalId = ref(metalIds.includes(requestedMetalId) ? requestedMetalId : prices.metals[0].id)
 const activePeriod = ref("30")
 const customStart = ref("2026-08-01")
 const customEnd = ref("2026-09-18")
@@ -20,6 +24,11 @@ const periodOptions = [
 ]
 
 const activeMetal = computed(() => prices.metals.find((metal) => metal.id === activeMetalId.value) || prices.metals[0])
+
+const selectMetal = (metalId) => {
+  activeMetalId.value = metalId
+  router.replace({ query: { ...route.query, metal: metalId } })
+}
 
 const customDays = computed(() => {
   const start = new Date(`${customStart.value}T00:00:00`)
@@ -61,6 +70,11 @@ const submitQuery = () => {
 watch([activePeriod, activeMetalId], () => {
   queryStatus.value = ""
 })
+
+watch(() => route.query.metal, (metalId) => {
+  const nextMetalId = Array.isArray(metalId) ? metalId[0] : metalId
+  if (metalIds.includes(nextMetalId)) activeMetalId.value = nextMetalId
+})
 </script>
 
 <template>
@@ -90,7 +104,7 @@ watch([activePeriod, activeMetalId], () => {
             :class="activeMetalId === metal.id ? 'border-brand-dark bg-brand-dark text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-brand-dark'"
             role="tab"
             :aria-selected="activeMetalId === metal.id"
-            @click="activeMetalId = metal.id"
+            @click="selectMetal(metal.id)"
           >
             <strong class="block">{{ metal.label }}</strong>
             <small :class="activeMetalId === metal.id ? 'text-white/65' : 'text-slate-500'">{{ metal.english }}</small>

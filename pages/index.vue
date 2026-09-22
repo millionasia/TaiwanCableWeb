@@ -8,6 +8,7 @@ const sponsors = millionasia.getSponsors()
 const newsCategories = millionasia.newsCategories
 const latestNews = millionasia.latestNews
 const products = millionasia.getProducts()
+const metalPrices = millionasia.getMetalPrices()
 const activeCategory = ref("全部")
 
 const productTones = {
@@ -53,12 +54,13 @@ const filteredNews = computed(() => {
         :ads="sponsors.gold"
         aria-label="黃金贊助會員輪播"
         class="lg:col-start-2 lg:row-start-1"
+        desktop-short
       />
 
       <LeftAdMarquee
         :ads="sponsors.general"
-        class="hidden lg:col-start-1 lg:row-start-2 lg:block"
-        fill
+        class="hidden self-start lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:block"
+        uniform
       />
 
       <section class="panel min-w-0 lg:col-start-2 lg:row-start-2">
@@ -67,9 +69,7 @@ const filteredNews = computed(() => {
               <p class="eyebrow">Latest News</p>
               <h2 class="text-3xl font-black">最新消息</h2>
             </div>
-            <NuxtLink to="/resources" class="font-black text-brand-dark underline decoration-2 underline-offset-4">
-              查看全部
-            </NuxtLink>
+            <span class="text-sm font-bold text-slate-500">最多顯示十筆</span>
           </div>
 
           <div class="flex gap-2 overflow-x-auto border-b border-slate-200 bg-slate-50 p-4" role="tablist" aria-label="最新消息分類">
@@ -88,11 +88,10 @@ const filteredNews = computed(() => {
           </div>
 
           <div class="grid">
-            <NuxtLink
+            <article
               v-for="item in filteredNews"
               :key="`${item.isoDate}-${item.title}`"
-              to="/resources"
-              class="grid gap-2 border-b border-slate-200 p-5 last:border-b-0 md:grid-cols-[108px_96px_1fr] md:items-start md:gap-4 hover:bg-slate-50"
+              class="grid gap-2 border-b border-slate-200 p-5 last:border-b-0 md:grid-cols-[108px_96px_1fr] md:items-start md:gap-4"
             >
               <time class="font-black text-brand-dark" :datetime="item.isoDate">{{ item.date }}</time>
               <span class="w-fit rounded-full bg-slate-100 px-2.5 py-1 text-xs font-black text-brand-steel">{{ item.category }}</span>
@@ -100,7 +99,7 @@ const filteredNews = computed(() => {
                 <h3 class="text-lg font-black">{{ item.title }}</h3>
                 <p class="mt-1 text-slate-600">{{ item.text }}</p>
               </div>
-            </NuxtLink>
+            </article>
           </div>
       </section>
 
@@ -110,6 +109,8 @@ const filteredNews = computed(() => {
 
   <section class="bg-[#20262d] py-10 text-white sm:py-14 lg:py-16">
     <div class="container-page">
+      <WeeklyMetalTrends :prices="metalPrices" />
+
       <div class="border-b border-white/15 pb-5 sm:pb-8">
         <div>
           <p class="text-xs font-black uppercase text-red-300">Product Categories</p>

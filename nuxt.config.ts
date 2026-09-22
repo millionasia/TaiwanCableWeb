@@ -11,7 +11,7 @@ export default defineNuxtConfig({
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           name: "description",
-          content: "臺灣區電線電纜工業同業公會新版 RWD 網站，整合會員查詢、產品分類、資料中心、入會服務與廣告版位。"
+          content: "臺灣區電線電纜工業同業公會新版 RWD 網站，整合公會資訊、會員廠商查詢、產品分類、金屬行情與入會服務。"
         }
       ],
       link: [

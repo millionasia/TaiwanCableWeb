@@ -3,7 +3,7 @@ import { millionasia } from "~/data/millionasia"
 
 const brand = millionasia.getBrand()
 const contact = millionasia.getContact()
-const footerNavigation = millionasia.getFooterNavigation()
+const navigation = millionasia.getNavigation()
 </script>
 
 <template>
@@ -24,10 +24,19 @@ const footerNavigation = millionasia.getFooterNavigation()
         <a class="text-white" :href="`mailto:${contact.email}`">Email：{{ contact.email }}</a>
       </address>
 
-      <nav class="flex flex-wrap content-start gap-x-5 gap-y-3" aria-label="Footer 功能導覽">
-        <NuxtLink v-for="item in footerNavigation" :key="item.to" :to="item.to" class="font-normal text-white hover:text-red-200">
-          {{ item.label }}
-        </NuxtLink>
+      <nav class="grid content-start grid-cols-2 gap-x-5 gap-y-5 text-sm" aria-label="Footer 功能導覽">
+        <section v-for="item in navigation" :key="item.label" class="grid content-start gap-2">
+          <NuxtLink :to="item.to" class="font-normal text-white hover:text-red-200">{{ item.label }}</NuxtLink>
+          <NuxtLink
+            v-for="child in item.children"
+            :key="child.label"
+            :to="child.to"
+            class="font-normal text-white/65 hover:text-red-200"
+          >
+            {{ child.label }}
+          </NuxtLink>
+        </section>
+        <NuxtLink to="/sitemap" class="self-start font-normal text-white hover:text-red-200">網站地圖</NuxtLink>
       </nav>
     </div>
 

@@ -3,7 +3,8 @@ const props = defineProps({
   ads: { type: Array, required: true },
   ariaLabel: { type: String, required: true },
   fill: { type: Boolean, default: false },
-  compact: { type: Boolean, default: false }
+  compact: { type: Boolean, default: false },
+  desktopShort: { type: Boolean, default: false }
 })
 
 const activeIndex = ref(0)
@@ -34,7 +35,11 @@ onBeforeUnmount(() => {
 <template>
   <div
     class="ad-rotator relative min-h-[112px] overflow-hidden rounded-lg"
-    :class="{ 'lg:min-h-[280px]': fill, '!min-h-[66px]': compact }"
+    :class="{
+      'lg:min-h-[280px]': fill,
+      '!min-h-[66px]': compact,
+      'lg:!min-h-[90px]': desktopShort
+    }"
     :aria-label="ariaLabel"
     @mouseenter="isPaused = true"
     @mouseleave="isPaused = false"
@@ -47,6 +52,7 @@ onBeforeUnmount(() => {
         :key="activeAd.title"
         :ad="activeAd"
         :layout="compact ? 'compact' : fill ? 'fill' : 'block'"
+        :class="{ 'lg:!min-h-[90px] lg:!p-4': desktopShort }"
       />
     </Transition>
 

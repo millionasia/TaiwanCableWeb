@@ -1,14 +1,15 @@
 <script setup>
 import { millionasia } from "~/data/millionasia"
 
-useHead({ title: "入會服務" })
+useHead({ title: "加入公會" })
 const steps = millionasia.membershipSteps
+const contact = millionasia.getContact()
 </script>
 
 <template>
   <PageHero
     eyebrow="Membership"
-    title="入會服務"
+    title="加入公會"
     description="協助有意加入公會的廠商理解申請條件、資料準備與審查流程。"
   />
   <section class="py-16">
@@ -22,9 +23,9 @@ const steps = millionasia.membershipSteps
             <span class="text-slate-600">{{ step.text }}</span>
           </li>
         </ol>
-        <NuxtLink to="/contact" class="mt-6 inline-flex min-h-12 items-center rounded-lg bg-brand-dark px-5 font-black text-white hover:bg-brand-red">
+        <a :href="`mailto:${contact.email}`" class="mt-6 inline-flex min-h-12 items-center rounded-lg bg-brand-dark px-5 font-black text-white hover:bg-brand-red">
           聯絡公會窗口
-        </NuxtLink>
+        </a>
       </article>
     </div>
   </section>

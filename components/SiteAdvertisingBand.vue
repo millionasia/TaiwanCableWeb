@@ -11,15 +11,17 @@ defineProps({
         :ads="sponsors.gold"
         aria-label="黃金贊助會員輪播"
         class="lg:col-start-2 lg:row-start-1"
+        desktop-short
       />
 
       <LeftAdMarquee
         :ads="sponsors.general"
-        class="hidden self-start lg:sticky lg:top-56 lg:col-start-1 lg:row-start-2 lg:block"
-        compact
+        class="hidden self-start lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:block"
+        uniform
       />
 
       <div class="page-content-shell min-w-0 lg:col-start-2 lg:row-start-2">
+        <SiteBreadcrumbs />
         <slot />
       </div>
 

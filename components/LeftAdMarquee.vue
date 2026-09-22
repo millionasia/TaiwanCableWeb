@@ -2,7 +2,8 @@
 const props = defineProps({
   ads: { type: Array, required: true },
   compact: { type: Boolean, default: false },
-  fill: { type: Boolean, default: false }
+  fill: { type: Boolean, default: false },
+  uniform: { type: Boolean, default: false }
 })
 
 const duplicatedAds = computed(() => [...props.ads, ...props.ads])
@@ -11,16 +12,23 @@ const duplicatedAds = computed(() => [...props.ads, ...props.ads])
 <template>
   <aside
     class="ad-marquee overflow-hidden rounded-lg border border-slate-200 bg-white shadow-steel"
-    :class="{ 'h-full': fill, 'lg:sticky lg:top-56': !compact && !fill }"
+    :class="{
+      'h-full': fill,
+      'lg:h-[1040px]': uniform,
+      'lg:sticky lg:top-56': !compact && !fill && !uniform
+    }"
     aria-label="一般贊助會員跑馬"
   >
     <div
       class="relative h-60 overflow-hidden"
-      :class="fill ? 'lg:h-full lg:min-h-[520px]' : compact ? 'lg:h-[280px]' : 'lg:h-[520px]'"
+      :class="uniform ? 'lg:h-full' : fill ? 'lg:h-full lg:min-h-[520px]' : compact ? 'lg:h-[280px]' : 'lg:h-[520px]'"
     >
       <div class="pointer-events-none absolute inset-x-0 top-0 z-10 h-14 bg-gradient-to-b from-white to-white/0" />
       <div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-14 bg-gradient-to-t from-white to-white/0" />
-      <div class="ad-marquee-track grid gap-3 p-3">
+      <div
+        class="ad-marquee-track grid gap-3 p-3"
+        :style="{ '--marquee-duration': `${Math.max(40, ads.length * 4)}s` }"
+      >
         <NuxtLink
           v-for="(ad, index) in duplicatedAds"
           :key="`${ad.title}-${index}`"

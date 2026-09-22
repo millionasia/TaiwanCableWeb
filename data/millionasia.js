@@ -14,21 +14,58 @@ export class MillionasiaSiteData {
     }
 
     this.navigation = [
-      { label: "首頁", to: "/" },
-      { label: "關於公會", to: "/about" },
-      { label: "公會理監事", to: "/council" },
-      { label: "會員查詢", to: "/members" },
-      { label: "會員大陸通訊處", to: "/mainland-offices" },
-      { label: "產品分類", to: "/products" },
-      { label: "金屬資料統計", to: "/statistics" },
-      { label: "倫敦金屬價格", to: "/metals" },
-      { label: "資料中心", to: "/resources" },
-      { label: "申請入會", to: "/join" },
-      { label: "聯絡我們", to: "/contact" }
+      {
+        label: "關於公會",
+        to: "/about",
+        icon: "building",
+        children: [
+          { label: "公會簡介", to: "/about" },
+          { label: "組織功能", to: "/about/organization" },
+          { label: "公會章程", to: "/about/charter" },
+          { label: "公會會務", to: "/about/services" },
+          { label: "產業結構", to: "/about/industry" },
+          { label: "產品類別", to: "/about/products" }
+        ]
+      },
+      {
+        label: "公會理監事",
+        to: "/council",
+        icon: "landmark",
+        children: [
+          { label: "本屆理監事", to: "/council" },
+          { label: "歷屆理監事", to: "/council-history" }
+        ]
+      },
+      {
+        label: "會員廠商查詢",
+        to: "/members",
+        icon: "users",
+        children: [
+          { label: "綜合查詢", to: "/members" },
+          { label: "分類查詢", to: "/products" },
+          { label: "會員大陸通訊處", to: "/mainland-offices" },
+          { label: "贊助會員查詢", to: "/sponsors" }
+        ]
+      },
+      {
+        label: "倫敦金屬價格",
+        to: "/metals",
+        icon: "chart",
+        children: [
+          { label: "銅價資料", to: { path: "/metals", query: { metal: "copper" } } },
+          { label: "鋁價資料", to: { path: "/metals", query: { metal: "aluminium" } } },
+          { label: "鎳價資料", to: { path: "/metals", query: { metal: "nickel" } } },
+          { label: "錫價資料", to: { path: "/metals", query: { metal: "tin" } } },
+          { label: "鉛價資料", to: { path: "/metals", query: { metal: "lead" } } },
+          { label: "美元匯率", to: { path: "/metals", query: { metal: "usd" } } },
+          { label: "金屬統計資料", to: "/statistics" }
+        ]
+      },
+      { label: "加入公會", to: "/join", icon: "user-plus", children: [] }
     ]
 
     this.footerNavigation = [
-      ...this.navigation.filter((item) => item.to !== "/"),
+      ...this.navigation.flatMap((item) => item.children.length ? item.children : [item]),
       { label: "網站地圖", to: "/sitemap" }
     ]
 
@@ -43,12 +80,18 @@ export class MillionasiaSiteData {
         { label: "黃金贊助會員", title: "黃金贊助席位 02", text: "會員產品與服務資訊預留", tone: "red" },
         { label: "黃金贊助會員", title: "黃金贊助席位 03", text: "支援多則內容自動翻轉輪播", tone: "dark" }
       ],
-      general: [
-        { label: "一般贊助會員", title: "一般贊助席位 01", text: "導體材料與相關服務", tone: "steel" },
-        { label: "一般贊助會員", title: "一般贊助席位 02", text: "線纜設備與智慧製程", tone: "red" },
-        { label: "一般贊助會員", title: "一般贊助席位 03", text: "檢驗測試與品質認證", tone: "dark" },
-        { label: "一般贊助會員", title: "一般贊助席位 04", text: "產業展會與會員活動", tone: "silver" }
-      ]
+      general: Array.from({ length: 20 }, (_, index) => ({
+        label: "一般贊助會員",
+        title: `一般贊助席位 ${String(index + 1).padStart(2, "0")}`,
+        text: [
+          "導體材料與相關服務",
+          "線纜設備與智慧製程",
+          "檢驗測試與品質認證",
+          "產業展會與會員活動",
+          "企業識別與產品資訊"
+        ][index % 5],
+        tone: ["steel", "red", "dark", "silver"][index % 4]
+      }))
     }
 
     this.home = {
@@ -150,7 +193,19 @@ export class MillionasiaSiteData {
         [17, "苑竣唐", "太平洋電線電纜股份有限公司", "106 年 8 月至 109 年 8 月"],
         [18, "苑竣唐", "太平洋電線電纜股份有限公司", "109 年 9 月至 112 年 8 月"],
         [19, "李慶煌", "台通光電股份有限公司", "112 年 9 月至 115 年 8 月"]
-      ].map(([term, chair, company, period]) => ({ term, chair, company, period }))
+      ].map(([term, chair, company, period]) => ({ term, chair, company, period })),
+      firstTerm: {
+        term: "第一屆",
+        period: "任期資料待補",
+        members: [
+          { role: "理事長", name: "孫法民", company: "太平洋" },
+          { role: "副理事長", name: "資料待補", company: "資料待補" },
+          { role: "常務理事", name: "資料待補", company: "資料待補" },
+          { role: "理事", name: "資料待補", company: "資料待補" },
+          { role: "常務監事", name: "資料待補", company: "資料待補" },
+          { role: "監事", name: "資料待補", company: "資料待補" }
+        ]
+      }
     }
 
     this.mainlandOffices = [

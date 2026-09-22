@@ -2,7 +2,7 @@
 import { millionasia } from "~/data/millionasia"
 
 useHead({ title: "網站地圖" })
-const links = millionasia.getFooterNavigation()
+const navigation = millionasia.getNavigation()
 </script>
 
 <template>
@@ -13,10 +13,19 @@ const links = millionasia.getFooterNavigation()
   />
   <section class="py-16">
     <div class="container-page">
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="grid min-h-24 content-center rounded-lg border border-slate-200 bg-white p-6 text-xl font-black shadow-sm hover:bg-slate-50">
-          {{ link.label }}
-        </NuxtLink>
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <section v-for="item in navigation" :key="item.label" class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+          <NuxtLink :to="item.to" class="text-xl font-black text-brand-ink hover:text-brand-dark">
+            {{ item.label }}
+          </NuxtLink>
+          <ul v-if="item.children.length" class="mt-4 grid gap-2 border-t border-slate-200 pt-4">
+            <li v-for="child in item.children" :key="child.label">
+              <NuxtLink :to="child.to" class="inline-flex min-h-9 items-center text-slate-600 hover:text-brand-dark">
+                {{ child.label }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </section>
       </div>
     </div>
   </section>
