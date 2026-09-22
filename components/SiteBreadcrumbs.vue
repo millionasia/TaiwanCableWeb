@@ -4,7 +4,8 @@ import { millionasia } from "~/data/millionasia"
 const route = useRoute()
 const navigation = millionasia.getNavigation()
 const fallbackLabels = {
-  "/sitemap": "網站地圖"
+  "/sitemap": "網站地圖",
+  "/news": "最新消息"
 }
 
 const toPath = (to) => typeof to === "string" ? to : to.path
@@ -28,6 +29,14 @@ const crumbs = computed(() => {
   const items = [{ label: "首頁", to: "/" }]
 
   if (!activeGroup.value) {
+    if (route.path.startsWith("/news/")) {
+      const slug = Array.isArray(route.params.slug) ? route.params.slug[0] : route.params.slug
+      const news = millionasia.latestNews.find((item) => item.slug === slug)
+      items.push({ label: "最新消息", to: "/news" })
+      items.push({ label: news?.title || "消息內容" })
+      return items
+    }
+
     items.push({ label: fallbackLabels[route.path] || "目前頁面" })
     return items
   }

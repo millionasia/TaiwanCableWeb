@@ -17,30 +17,38 @@ const content = millionasia.getAboutContent().charter
       <p class="mt-2 text-sm leading-6 text-slate-500">{{ content.reference }}</p>
     </div>
 
-    <div class="mt-10 grid gap-10 lg:grid-cols-[1fr_360px] lg:items-start">
-      <section>
-        <h2 class="text-3xl font-black">章程架構</h2>
-        <div class="mt-6 divide-y divide-slate-200 border-y border-slate-200">
-          <article v-for="chapter in content.chapters" :key="chapter.title" class="grid gap-2 py-5 sm:grid-cols-[220px_1fr] sm:gap-6">
-            <div>
-              <h3 class="text-lg font-black">{{ chapter.title }}</h3>
-              <p class="mt-1 text-sm font-bold text-brand-dark">{{ chapter.range }}</p>
+    <nav class="mt-8 flex flex-wrap gap-2 border-b border-slate-200 pb-6" aria-label="章程章節">
+      <a
+        v-for="(section, index) in content.sections"
+        :key="section.title"
+        :href="`#charter-${index + 1}`"
+        class="rounded-md border border-slate-300 px-3 py-2 text-sm font-black text-slate-700 hover:border-brand-dark hover:text-brand-dark"
+      >
+        {{ section.title }}
+      </a>
+    </nav>
+
+    <div class="mt-10 grid gap-14">
+      <section v-for="(section, sectionIndex) in content.sections" :id="`charter-${sectionIndex + 1}`" :key="section.title" class="scroll-mt-64">
+        <div class="border-b-2 border-brand-ink pb-4">
+          <p class="eyebrow">Chapter {{ sectionIndex + 1 }}</p>
+          <h2 class="mt-1 text-3xl font-black">{{ section.title }}</h2>
+        </div>
+        <div class="divide-y divide-slate-200">
+          <article v-for="article in section.articles" :key="article.number" class="grid gap-3 py-6 md:grid-cols-[112px_1fr] md:gap-7">
+            <h3 class="font-black text-brand-dark">{{ article.number }}</h3>
+            <div class="grid gap-3 leading-8 text-slate-700">
+              <p v-for="paragraph in article.paragraphs" :key="paragraph">{{ paragraph }}</p>
+              <ol v-if="article.items" class="grid gap-2 pl-6">
+                <li v-for="(item, index) in article.items" :key="item" class="list-decimal pl-1">
+                  {{ item }}
+                </li>
+              </ol>
+              <p v-if="article.closing">{{ article.closing }}</p>
             </div>
-            <p class="leading-7 text-slate-600">{{ chapter.text }}</p>
           </article>
         </div>
       </section>
-
-      <aside class="rounded-lg bg-brand-ink p-6 text-white">
-        <p class="text-xs font-black uppercase text-red-300">Article 9</p>
-        <h2 class="mt-2 text-2xl font-black">法定任務重點</h2>
-        <ol class="mt-5 grid gap-3">
-          <li v-for="(task, index) in content.tasks" :key="task" class="grid grid-cols-[30px_1fr] gap-2 text-sm leading-6 text-white/75">
-            <span class="font-black text-red-300">{{ index + 1 }}</span>
-            <span>{{ task }}</span>
-          </li>
-        </ol>
-      </aside>
     </div>
 
     <p class="mt-8 text-sm text-slate-500">正式適用內容以公會公告及主管機關最新核備版本為準。</p>

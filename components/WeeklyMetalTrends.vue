@@ -37,7 +37,7 @@ const shortDate = (date) => date.slice(5).replace(".", "/")
     <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
       <div>
         <p class="text-xs font-black uppercase text-red-300">7-Day Metal Trends</p>
-        <h2 id="weekly-metal-title" class="mt-2 text-2xl font-black sm:text-3xl">銅鋁鎳錫鉛最近七日走勢</h2>
+        <h2 id="weekly-metal-title" class="mt-2 text-2xl font-black sm:text-3xl">金屬價格最近七日走勢</h2>
       </div>
       <NuxtLink to="/metals" class="text-sm font-black text-white underline decoration-2 underline-offset-4">
         查看完整行情

@@ -30,6 +30,16 @@ const filteredNews = computed(() => {
   return news.slice(0, 10)
 })
 
+const newsSlots = computed(() => {
+  const slots = filteredNews.value.map((item) => ({ type: "news", item }))
+
+  while (slots.length < 10) {
+    slots.push({ type: "placeholder", key: `placeholder-${activeCategory.value}-${slots.length}` })
+  }
+
+  return slots
+})
+
 </script>
 
 <template>
@@ -63,13 +73,13 @@ const filteredNews = computed(() => {
         uniform
       />
 
-      <section class="panel min-w-0 lg:col-start-2 lg:row-start-2">
+      <section class="panel flex min-w-0 flex-col lg:col-start-2 lg:row-start-2 lg:h-[1040px]">
           <div class="flex items-end justify-between gap-4 border-b border-slate-200 p-5">
             <div>
               <p class="eyebrow">Latest News</p>
               <h2 class="text-3xl font-black">最新消息</h2>
             </div>
-            <span class="text-sm font-bold text-slate-500">最多顯示十筆</span>
+            <NuxtLink to="/news" class="text-sm font-black text-brand-dark hover:text-brand-red">更多消息...</NuxtLink>
           </div>
 
           <div class="flex gap-2 overflow-x-auto border-b border-slate-200 bg-slate-50 p-4" role="tablist" aria-label="最新消息分類">
@@ -87,19 +97,28 @@ const filteredNews = computed(() => {
             </button>
           </div>
 
-          <div class="grid">
-            <article
-              v-for="item in filteredNews"
-              :key="`${item.isoDate}-${item.title}`"
-              class="grid gap-2 border-b border-slate-200 p-5 last:border-b-0 md:grid-cols-[108px_96px_1fr] md:items-start md:gap-4"
-            >
-              <time class="font-black text-brand-dark" :datetime="item.isoDate">{{ item.date }}</time>
-              <span class="w-fit rounded-full bg-slate-100 px-2.5 py-1 text-xs font-black text-brand-steel">{{ item.category }}</span>
-              <div class="min-w-0">
-                <h3 class="text-lg font-black">{{ item.title }}</h3>
-                <p class="mt-1 text-slate-600">{{ item.text }}</p>
+          <div class="grid flex-1 lg:grid-rows-10">
+            <template v-for="slot in newsSlots" :key="slot.type === 'news' ? slot.item.slug : slot.key">
+              <NuxtLink
+                v-if="slot.type === 'news'"
+                :to="`/news/${slot.item.slug}`"
+                class="group grid min-h-[88px] gap-2 border-b border-slate-200 p-5 transition last:border-b-0 hover:bg-slate-50 md:grid-cols-[108px_96px_1fr] md:items-start md:gap-4 lg:min-h-0 lg:content-center lg:py-3"
+              >
+                <time class="font-black text-brand-dark" :datetime="slot.item.isoDate">{{ slot.item.date }}</time>
+                <span class="w-fit rounded-full bg-slate-100 px-2.5 py-1 text-xs font-black text-brand-steel">{{ slot.item.category }}</span>
+                <span class="min-w-0">
+                  <strong class="block text-base leading-6 group-hover:text-brand-red">{{ slot.item.title }}</strong>
+                  <span class="mt-0.5 block text-sm leading-6 text-slate-600">{{ slot.item.text }}</span>
+                </span>
+              </NuxtLink>
+              <div
+                v-else
+                class="grid min-h-[88px] content-center border-b border-slate-200 bg-slate-50/40 px-5 py-3 text-sm text-slate-400 last:border-b-0 lg:min-h-0"
+                aria-label="消息資料待補"
+              >
+                資料待補
               </div>
-            </article>
+            </template>
           </div>
       </section>
 
@@ -112,9 +131,15 @@ const filteredNews = computed(() => {
       <WeeklyMetalTrends :prices="metalPrices" />
 
       <div class="border-b border-white/15 pb-5 sm:pb-8">
-        <div>
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
           <p class="text-xs font-black uppercase text-red-300">Product Categories</p>
           <h2 class="mt-2 text-3xl font-black sm:text-4xl">產品分類查詢</h2>
+          </div>
+          <NuxtLink to="/members" class="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/30 px-4 py-2 font-black text-white transition hover:border-red-300 hover:bg-white/10">
+            <NavIcon name="search" class="h-4 w-4" />
+            廠商綜合查詢
+          </NuxtLink>
         </div>
       </div>
 

@@ -86,7 +86,7 @@ watch(() => route.fullPath, () => {
           </span>
         </NuxtLink>
 
-        <nav class="hidden grid-cols-5 items-center gap-1 xl:grid" aria-label="主要導覽">
+        <nav class="hidden grid-cols-3 items-center gap-1 xl:grid" aria-label="主要導覽">
           <div v-for="item in navigation" :key="item.label" class="group relative">
             <NuxtLink
               :to="item.to"
