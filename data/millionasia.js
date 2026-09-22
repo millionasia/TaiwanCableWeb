@@ -20,6 +20,8 @@ export class MillionasiaSiteData {
       { label: "會員查詢", to: "/members" },
       { label: "會員大陸通訊處", to: "/mainland-offices" },
       { label: "產品分類", to: "/products" },
+      { label: "金屬資料統計", to: "/statistics" },
+      { label: "倫敦金屬價格", to: "/metals" },
       { label: "資料中心", to: "/resources" },
       { label: "申請入會", to: "/join" },
       { label: "聯絡我們", to: "/contact" }
@@ -30,23 +32,22 @@ export class MillionasiaSiteData {
       { label: "網站地圖", to: "/sitemap" }
     ]
 
-    this.ads = {
-      top: {
-        label: "AD",
-        title: "會員品牌曝光專區",
-        text: "選單下方橫幅廣告",
-        tone: "steel"
-      },
-      leftMarquee: [
-        { label: "AD", title: "導體材料", text: "高純度銅材供應" },
-        { label: "AD", title: "線纜設備", text: "智慧製程升級" },
-        { label: "AD", title: "檢驗測試", text: "品質認證服務" },
-        { label: "AD", title: "工業展會", text: "會員優惠曝光" }
+    this.sponsors = {
+      platinum: [
+        { label: "白金贊助會員", title: "白金贊助席位 01", text: "企業識別、產品與官方連結預留", tone: "steel" },
+        { label: "白金贊助會員", title: "白金贊助席位 02", text: "全站置頂品牌曝光版位", tone: "red" },
+        { label: "白金贊助會員", title: "白金贊助席位 03", text: "支援多則內容自動翻轉輪播", tone: "dark" }
       ],
-      newsRotator: [
-        { label: "AD", title: "產業合作夥伴", text: "最新消息上方廣告", tone: "steel" },
-        { label: "AD", title: "線纜產業研討會", text: "報名與品牌曝光", tone: "red" },
-        { label: "AD", title: "智慧製造專區", text: "供應鏈合作版位", tone: "dark" }
+      gold: [
+        { label: "黃金贊助會員", title: "黃金贊助席位 01", text: "主要內容上方品牌曝光版位", tone: "steel" },
+        { label: "黃金贊助會員", title: "黃金贊助席位 02", text: "會員產品與服務資訊預留", tone: "red" },
+        { label: "黃金贊助會員", title: "黃金贊助席位 03", text: "支援多則內容自動翻轉輪播", tone: "dark" }
+      ],
+      general: [
+        { label: "一般贊助會員", title: "一般贊助席位 01", text: "導體材料與相關服務", tone: "steel" },
+        { label: "一般贊助會員", title: "一般贊助席位 02", text: "線纜設備與智慧製程", tone: "red" },
+        { label: "一般贊助會員", title: "一般贊助席位 03", text: "檢驗測試與品質認證", tone: "dark" },
+        { label: "一般贊助會員", title: "一般贊助席位 04", text: "產業展會與會員活動", tone: "silver" }
       ]
     }
 
@@ -72,9 +73,7 @@ export class MillionasiaSiteData {
       { date: "2026.08.15", isoDate: "2026-08-15", category: "休市公告", title: "中秋節期間市場資訊更新時程", text: "休市期間行情資料將於開市後統一更新。" },
       { date: "2026.08.08", isoDate: "2026-08-08", category: "金屬月刊", title: "2026 年 7 月金屬行情月刊", text: "回顧基本金屬價格走勢與供需變化。" },
       { date: "2026.07.30", isoDate: "2026-07-30", category: "公會公告", title: "年度產銷統計資料填報提醒", text: "請會員廠商依期限完成資料回覆。" },
-      { date: "2026.07.22", isoDate: "2026-07-22", category: "產業動態", title: "再生銅材應用與品質管理", text: "關注循環材料在線纜產品的實務應用。" },
-      { date: "2026.07.15", isoDate: "2026-07-15", category: "法規標準", title: "電纜阻燃測試規範說明", text: "整理測試程序與會員常見問題。" },
-      { date: "2026.07.09", isoDate: "2026-07-09", category: "活動訊息", title: "低碳製造與材料趨勢講座", text: "提供線上直播與會後簡報下載。" }
+      { date: "2026.07.22", isoDate: "2026-07-22", category: "產業動態", title: "再生銅材應用與品質管理", text: "關注循環材料在線纜產品的實務應用。" }
     ]
 
     this.members = [
@@ -417,6 +416,46 @@ export class MillionasiaSiteData {
       }
     }
 
+    this.metalStatistics = {
+      categories: ["全部資料", "LME 每日行情", "金屬月刊", "產銷統計", "價格走勢圖"],
+      records: [
+        { date: "2026.04.08", category: "LME 每日行情", title: "115年3月份 LME 每日行情", format: "PDF" },
+        { date: "2026.03.06", category: "價格走勢圖", title: "115年3月銅價走勢圖", format: "PDF" },
+        { date: "2026.03.02", category: "LME 每日行情", title: "115年1-2月份 LME 每日行情", format: "XLSX" },
+        { date: "2026.02.12", category: "金屬月刊", title: "115年1月份金屬行情月刊", format: "PDF" },
+        { date: "2026.01.08", category: "LME 每日行情", title: "114年12月份 LME 每日行情", format: "XLSX" },
+        { date: "2025.12.08", category: "價格走勢圖", title: "114年12月銅價走勢圖", format: "PDF" },
+        { date: "2025.12.03", category: "產銷統計", title: "114年度電線電纜產銷統計摘要", format: "PDF" },
+        { date: "2025.11.07", category: "LME 每日行情", title: "114年10月份 LME 每日行情", format: "XLSX" },
+        { date: "2025.10.09", category: "金屬月刊", title: "114年9月份金屬行情月刊", format: "PDF" },
+        { date: "2025.09.05", category: "價格走勢圖", title: "114年8月銅價走勢圖", format: "PDF" }
+      ]
+    }
+
+    this.metalPrices = {
+      updatedAt: "2026.09.18 16:30",
+      metals: [
+        { id: "copper", label: "銅", english: "Copper", unit: "US$/MT", latest: "9,860", change: "+1.24%", tone: "#d45c3b", values: [9150, 9280, 9205, 9410, 9360, 9520, 9475, 9610, 9565, 9720, 9680, 9860] },
+        { id: "aluminium", label: "鋁", english: "Aluminium", unit: "US$/MT", latest: "2,540", change: "+0.48%", tone: "#64748b", values: [2420, 2440, 2415, 2460, 2485, 2470, 2505, 2490, 2520, 2510, 2530, 2540] },
+        { id: "nickel", label: "鎳", english: "Nickel", unit: "US$/MT", latest: "19,280", change: "-0.36%", tone: "#356472", values: [19750, 19610, 19840, 19580, 19420, 19380, 19510, 19240, 19400, 19310, 19350, 19280] },
+        { id: "tin", label: "錫", english: "Tin", unit: "US$/MT", latest: "32,450", change: "+0.82%", tone: "#5f6670", values: [30900, 31200, 31050, 31500, 31720, 31640, 32050, 31900, 32280, 32150, 32320, 32450] },
+        { id: "lead", label: "鉛", english: "Lead", unit: "US$/MT", latest: "2,068", change: "+0.15%", tone: "#7a4e58", values: [2025, 2040, 2032, 2055, 2048, 2060, 2052, 2070, 2062, 2075, 2065, 2068] },
+        { id: "usd", label: "美元匯率", english: "USD / TWD", unit: "NT$/US$", latest: "31.82", change: "-0.09%", tone: "#2e6b57", values: [32.10, 32.05, 32.18, 32.02, 31.96, 31.91, 31.98, 31.88, 31.92, 31.85, 31.87, 31.82] }
+      ],
+      table: [
+        ["2026.09.18", "9,860", "2,540", "19,280", "32,450", "2,068", "31.82"],
+        ["2026.09.17", "9,812", "2,528", "19,350", "32,320", "2,065", "31.87"],
+        ["2026.09.16", "9,768", "2,515", "19,310", "32,150", "2,075", "31.85"],
+        ["2026.09.15", "9,720", "2,520", "19,400", "32,280", "2,062", "31.92"],
+        ["2026.09.14", "9,655", "2,490", "19,240", "31,900", "2,070", "31.88"],
+        ["2026.09.11", "9,610", "2,505", "19,510", "32,050", "2,052", "31.98"],
+        ["2026.09.10", "9,475", "2,470", "19,380", "31,640", "2,060", "31.91"],
+        ["2026.09.09", "9,520", "2,485", "19,420", "31,720", "2,048", "31.96"],
+        ["2026.09.08", "9,360", "2,460", "19,580", "31,500", "2,055", "32.02"],
+        ["2026.09.07", "9,410", "2,415", "19,840", "31,050", "2,032", "32.18"]
+      ].map(([date, copper, aluminium, nickel, tin, lead, usd]) => ({ date, copper, aluminium, nickel, tin, lead, usd }))
+    }
+
     this.market = [
       { metal: "Copper", value: "US$/MT 9,860" },
       { metal: "Aluminium", value: "US$/MT 2,540" },
@@ -454,8 +493,8 @@ export class MillionasiaSiteData {
     return this.footerNavigation
   }
 
-  getAds() {
-    return this.ads
+  getSponsors() {
+    return this.sponsors
   }
 
   getMembers() {
@@ -480,6 +519,14 @@ export class MillionasiaSiteData {
 
   getAboutContent() {
     return this.about
+  }
+
+  getMetalStatistics() {
+    return this.metalStatistics
+  }
+
+  getMetalPrices() {
+    return this.metalPrices
   }
 }
 

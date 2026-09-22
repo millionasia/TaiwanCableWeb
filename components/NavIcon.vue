@@ -47,6 +47,16 @@ defineProps({
       <path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z" />
     </template>
 
+    <template v-else-if="name === 'bar-chart'">
+      <path d="M3 3v18h18" />
+      <path d="M7 16v-5M12 16V7M17 16V4" />
+    </template>
+
+    <template v-else-if="name === 'chart'">
+      <path d="M3 3v18h18" />
+      <path d="m7 15 4-4 3 2 5-6" />
+    </template>
+
     <template v-else-if="name === 'user-plus'">
       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
       <circle cx="9" cy="7" r="4" />

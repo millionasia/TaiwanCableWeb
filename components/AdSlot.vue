@@ -17,16 +17,23 @@ const toneClass = computed(() => {
 
 <template>
   <NuxtLink
-    to="#"
+    :to="ad.to || '#'"
     class="ad-surface min-h-[104px] bg-gradient-to-br"
     :class="[
       toneClass,
       layout === 'wide' ? 'grid md:min-h-[86px] md:grid-cols-[auto_1fr_auto] md:items-center md:gap-4' : 'grid',
+      layout === 'compact' ? 'grid min-h-[66px] grid-cols-[auto_1fr] items-center gap-x-3 gap-y-0 !p-3 md:grid-cols-[auto_auto_1fr]' : '',
       layout === 'fill' ? 'h-full content-center gap-2' : ''
     ]"
   >
     <span class="relative z-10 w-fit rounded-full bg-[#d1a34f] px-2 py-0.5 text-[11px] font-black text-brand-ink">{{ ad.label }}</span>
-    <strong class="relative z-10 text-xl leading-tight">{{ ad.title }}</strong>
-    <small class="relative z-10 text-sm font-black text-white/75" :class="{ 'md:justify-self-end': layout === 'wide' }">{{ ad.text }}</small>
+    <strong class="relative z-10 leading-tight" :class="layout === 'compact' ? 'text-base md:text-lg' : 'text-xl'">{{ ad.title }}</strong>
+    <small
+      class="relative z-10 text-sm font-black text-white/75"
+      :class="{
+        'md:justify-self-end': layout === 'wide',
+        'col-span-2 mt-1 truncate md:col-span-1 md:mt-0 md:justify-self-end': layout === 'compact'
+      }"
+    >{{ ad.text }}</small>
   </NuxtLink>
 </template>

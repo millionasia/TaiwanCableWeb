@@ -4,7 +4,7 @@ import { millionasia } from "~/data/millionasia"
 useHead({ title: "首頁" })
 
 const home = millionasia.home
-const ads = millionasia.getAds()
+const sponsors = millionasia.getSponsors()
 const newsCategories = millionasia.newsCategories
 const latestNews = millionasia.latestNews
 const products = millionasia.getProducts()
@@ -26,7 +26,7 @@ const filteredNews = computed(() => {
     ? latestNews
     : latestNews.filter((item) => item.category === activeCategory.value)
 
-  return news.slice(0, 6)
+  return news.slice(0, 10)
 })
 
 </script>
@@ -36,7 +36,7 @@ const filteredNews = computed(() => {
     <HeroCarousel :images="home.heroImages">
       <div class="container-page flex min-h-[520px] items-center py-14 md:min-h-[560px] md:py-16">
         <div class="max-w-3xl pb-10 sm:pb-0">
-          <h1 class="max-w-3xl text-4xl font-black leading-tight text-white md:text-6xl">
+          <h1 class="max-w-3xl text-3xl font-black leading-tight text-white sm:text-4xl md:text-6xl">
             {{ home.title }}
           </h1>
           <p class="mt-5 max-w-2xl text-lg leading-8 text-white/85">
@@ -49,12 +49,19 @@ const filteredNews = computed(() => {
 
   <section class="border-y border-slate-300 bg-[#d7e0e5] py-12">
     <div class="container-page grid gap-6 lg:grid-cols-[184px_1fr]">
-      <LeftAdMarquee :ads="ads.leftMarquee" class="hidden lg:block" />
+      <AdRotator
+        :ads="sponsors.gold"
+        aria-label="黃金贊助會員輪播"
+        class="lg:col-start-2 lg:row-start-1"
+      />
 
-      <div class="grid gap-5">
-        <AdRotator :ads="ads.newsRotator" aria-label="最新消息上方廣告輪播" />
+      <LeftAdMarquee
+        :ads="sponsors.general"
+        class="hidden lg:col-start-1 lg:row-start-2 lg:block"
+        fill
+      />
 
-        <section class="panel">
+      <section class="panel min-w-0 lg:col-start-2 lg:row-start-2">
           <div class="flex items-end justify-between gap-4 border-b border-slate-200 p-5">
             <div>
               <p class="eyebrow">Latest News</p>
@@ -95,15 +102,9 @@ const filteredNews = computed(() => {
               </div>
             </NuxtLink>
           </div>
-        </section>
+      </section>
 
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-[#d7e0e5] py-5 lg:hidden" aria-label="產品分類上方廣告">
-    <div class="container-page">
-      <MobileAdMarquee :ads="ads.leftMarquee" />
+      <MobileAdMarquee :ads="sponsors.general" class="lg:hidden" />
     </div>
   </section>
 

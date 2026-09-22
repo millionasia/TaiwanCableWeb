@@ -5,7 +5,7 @@ defineProps({
 </script>
 
 <template>
-  <aside class="mobile-ad-marquee overflow-hidden" aria-label="手機版廣告跑馬">
+  <aside class="mobile-ad-marquee overflow-hidden" aria-label="一般贊助會員跑馬">
     <div class="mobile-ad-marquee-track flex w-max">
       <div
         v-for="group in 2"
