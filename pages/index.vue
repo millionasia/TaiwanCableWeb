@@ -136,8 +136,7 @@ const newsSlots = computed(() => {
           <p class="text-xs font-black uppercase text-red-300">Product Categories</p>
           <h2 class="mt-2 text-3xl font-black sm:text-4xl">產品分類查詢</h2>
           </div>
-          <NuxtLink to="/members" class="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/30 px-4 py-2 font-black text-white transition hover:border-red-300 hover:bg-white/10">
-            <NavIcon name="search" class="h-4 w-4" />
+          <NuxtLink to="/members" class="text-sm font-black text-white underline decoration-2 underline-offset-4">
             廠商綜合查詢
           </NuxtLink>
         </div>

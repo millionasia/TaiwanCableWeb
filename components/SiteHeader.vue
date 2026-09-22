@@ -69,7 +69,7 @@ watch(() => route.fullPath, () => {
     </div>
 
     <div class="bg-white">
-      <div class="container-page flex min-h-[68px] flex-wrap items-center gap-x-4 py-2 xl:grid xl:min-h-[96px] xl:grid-cols-[minmax(360px,0.95fr)_minmax(0,2fr)]">
+      <div class="container-page flex min-h-[68px] flex-wrap items-center gap-x-4 py-2 xl:grid xl:min-h-[96px] xl:grid-cols-[minmax(0,1.1fr)_minmax(0,.9fr)]">
         <NuxtLink
           to="/"
           class="flex min-w-0 flex-1 items-center gap-2 sm:gap-3 lg:gap-4"
@@ -81,16 +81,16 @@ watch(() => route.fullPath, () => {
             class="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12 xl:h-16 xl:w-16"
           >
           <span class="grid min-w-0 gap-0.5">
-            <strong class="whitespace-nowrap text-[13px] leading-tight text-brand-ink sm:text-lg xl:text-xl">{{ brand.name }}</strong>
-            <small class="hidden text-xs font-semibold text-brand-steel xl:block">{{ brand.englishName }}</small>
+            <strong class="whitespace-nowrap text-[13px] leading-tight text-brand-ink sm:text-lg xl:text-[25px]">{{ brand.name }}</strong>
+            <small class="hidden text-sm font-semibold text-brand-steel xl:block">{{ brand.englishName }}</small>
           </span>
         </NuxtLink>
 
-        <nav class="hidden grid-cols-3 items-center gap-1 xl:grid" aria-label="主要導覽">
+        <nav class="hidden items-center gap-1 xl:grid xl:w-fit xl:grid-cols-[repeat(3,max-content)] xl:justify-self-start" aria-label="主要導覽">
           <div v-for="item in navigation" :key="item.label" class="group relative">
             <NuxtLink
               :to="item.to"
-              class="flex min-h-11 items-center justify-center gap-1 whitespace-nowrap rounded-md px-2 py-2 text-[16px] font-black text-slate-700 transition hover:bg-slate-100 hover:text-brand-dark"
+              class="flex min-h-11 items-center justify-start gap-1 whitespace-nowrap rounded-md px-2 py-2 text-[16px] font-black text-slate-700 transition hover:bg-slate-100 hover:text-brand-dark"
               :class="{ 'bg-slate-100 text-brand-dark': isCurrent(item) }"
               :aria-current="isCurrent(item) ? 'page' : undefined"
             >

@@ -19,6 +19,7 @@ export class MillionasiaSiteData {
         to: "/about",
         icon: "building",
         children: [
+          { label: "理事長的話", to: "/about/chairman" },
           { label: "公會簡介", to: "/about" },
           { label: "組織功能", to: "/about/organization" },
           { label: "公會章程", to: "/about/charter" },
@@ -376,6 +377,7 @@ export class MillionasiaSiteData {
     ]
 
     this.aboutSections = [
+      { label: "理事長的話", to: "/about/chairman", icon: "landmark" },
       { label: "公會簡介", to: "/about", icon: "building" },
       { label: "組織功能", to: "/about/organization", icon: "network" },
       { label: "公會章程", to: "/about/charter", icon: "document" },
@@ -686,6 +688,30 @@ export class MillionasiaSiteData {
       { title: "送件審查", text: "公會受理後依流程審核與回覆。" },
       { title: "完成入會", text: "完成會費與會員資料建檔。" }
     ]
+
+    this.membershipApplication = {
+      notes: [
+        { title: "一般會員", text: "申請加入本會會員，必須在臺灣設立製造電線電纜之工廠。" },
+        { title: "贊助會員", text: "相關產業（非電線電纜製造業或在臺無設廠之同業）亦可申請加入本會成為贊助會員。" }
+      ],
+      cities: ["台中市", "台北市", "台東縣", "台南市", "宜蘭縣", "花蓮縣", "南投縣", "屏東縣", "苗栗縣", "桃園市", "海外", "高雄市", "基隆市", "雲林縣", "新北市", "新竹市", "新竹縣", "嘉義市", "嘉義縣", "彰化縣", "澎湖縣"],
+      businessItems: [
+        "SCR銅線及銅條",
+        "無氧銅線及銅棒",
+        "軟硬絞銅線",
+        "高壓電線電纜",
+        "低壓電線電纜",
+        "橡膠電線電纜",
+        "船舶電纜",
+        "通信電纜類",
+        "光纖通信電纜",
+        "漆包線及紗包線",
+        "電子線",
+        "鋁電線電纜",
+        "特殊線",
+        "其它"
+      ]
+    }
   }
 
   getBrand() {
